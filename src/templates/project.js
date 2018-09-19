@@ -13,6 +13,8 @@ export const ProjectTemplate = ({
 	tags,
 	title,
 	helmet,
+	prev,
+	next,
 }) => {
 	const PostContent = contentComponent || Content;
 
@@ -22,8 +24,10 @@ export const ProjectTemplate = ({
 
 			<h1>{title}</h1>
 			<p>{description}</p>
-
 			<PostContent content={content} />
+
+			{prev && <Link to={prev.fields.slug}>&lsquo; prev</Link>}
+			{next && <Link to={next.fields.slug}> next &rsquo;</Link>}
 
 			{tags && tags.length ? (
 				<div style={{ marginTop: `4rem` }}>
@@ -47,14 +51,19 @@ ProjectTemplate.propTypes = {
 	description: PropTypes.string,
 	title: PropTypes.string,
 	helmet: PropTypes.instanceOf(Helmet),
+	prev: PropTypes.node,
+	next: PropTypes.node,
 };
 
-const ProjectPost = ({ data }) => {
+const ProjectPost = ({ data, pageContext }) => {
 	const { markdownRemark: post } = data;
+	const { prev, next } = pageContext;
 
 	return (
 		<Layout>
 			<ProjectTemplate
+				prev={prev}
+				next={next}
 				content={post.html}
 				contentComponent={HTMLContent}
 				description={post.frontmatter.description}
@@ -70,6 +79,7 @@ ProjectPost.propTypes = {
 	data: PropTypes.shape({
 		markdownRemark: PropTypes.object,
 	}),
+	pageContext: PropTypes.object,
 };
 
 export default ProjectPost;
