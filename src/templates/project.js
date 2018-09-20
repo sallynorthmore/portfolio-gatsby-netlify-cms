@@ -15,9 +15,10 @@ export const ProjectTemplate = ({
 	helmet,
 	prev,
 	next,
+	date,
 }) => {
 	const PostContent = contentComponent || Content;
-
+	console.log(date);
 	return (
 		<section className="Project">
 			{helmet || ''}
@@ -25,7 +26,6 @@ export const ProjectTemplate = ({
 			<header className="Project-header">
 				<h1 className="Project-title">{title}</h1>
 				<p className="Project-description">{description}</p>
-				<p className="Project-date">date</p>
 			</header>
 
 			<div className="Project-body">
@@ -41,6 +41,8 @@ export const ProjectTemplate = ({
 						))}
 					</ul>
 				) : null}
+
+				<p className="Project-date">{date}</p>
 			</div>
 
 			<div className="Project-navigation">
@@ -78,6 +80,7 @@ const ProjectPost = ({ data, pageContext }) => {
 	return (
 		<Layout>
 			<ProjectTemplate
+				date={post.frontmatter.date}
 				prev={prev}
 				next={next}
 				content={post.html}
