@@ -15,3 +15,5 @@ tags:
   - Sketch
 ---
 Creation of a Frontend PatternLab component library (Gulp+Mustache flavour) for a retail redesign + documentation.
+
+![](/img/boden.jpg)
