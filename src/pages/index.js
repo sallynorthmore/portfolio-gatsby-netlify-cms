@@ -18,29 +18,16 @@ export default class IndexPage extends React.Component {
 				</h1>
 				<section className="HomePage-projects">
 					<h2 className="Title">Some things I've built</h2>
+					<div>⇩</div>
 
-					<div className="Projects">
+					<div className="Grid">
 						{posts.map(({ node: post }) => (
-							<div
-								className="Project"
-								style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-								key={post.id}
-							>
-								<p>
-									<Link className="Title" to={post.fields.slug}>
-										{post.frontmatter.title}
-									</Link>
-									<span> &bull; </span>
-									<small>{post.frontmatter.date}</small>
-								</p>
-								<p>
-									{post.excerpt}
-									<br />
-									<br />
-									<Link className="button is-small" to={post.fields.slug}>
-										Keep Reading →
-									</Link>
-								</p>
+							<div className="Grid-item" key={post.id}>
+								<Link className="Grid-title" to={post.fields.slug}>
+									{post.frontmatter.title}
+									<div className="Grid-subtitle">{post.frontmatter.date}</div>
+									<div className="Grid-excerpt">{post.excerpt}</div>
+								</Link>
 							</div>
 						))}
 					</div>
