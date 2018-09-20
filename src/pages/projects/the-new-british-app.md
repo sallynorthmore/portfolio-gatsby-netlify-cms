@@ -1,6 +1,6 @@
 ---
 templateKey: project
-title: The New British App
+title: The New British (1st Edition)
 date: 2014-07-31T23:00:00.000Z
 description: The New British
 tags:
