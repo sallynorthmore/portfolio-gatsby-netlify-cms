@@ -23,8 +23,8 @@ export default class IndexPage extends React.Component {
 					<div className="Grid">
 						{posts.map(({ node: post }) => (
 							<div className="Grid-item" key={post.id}>
-								<Link className="Grid-title" to={post.fields.slug}>
-									{post.frontmatter.title}
+								<Link className="Grid-inner" to={post.fields.slug}>
+									<h3 className="Grid-title">{post.frontmatter.title}</h3>
 									<div className="Grid-subtitle">{post.frontmatter.date}</div>
 									<div className="Grid-excerpt">{post.excerpt}</div>
 								</Link>
