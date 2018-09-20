@@ -7,12 +7,16 @@ const Banner = () => (
 		<Link to="/" className="Title">
 			Sally Northmore
 		</Link>
+		<a
+			href="https://www.linkedin.com/in/sally-northmore-5568489/"
+			target="_blank"
+			className="Title"
+		>
+			Contact
+		</a>
 	</header>
 );
 
-// <Link to="/contact" className="Title">
-// 	Contact
-// </Link>
 // <Link to="/about" className="Title">
 // 	About
 // </Link>

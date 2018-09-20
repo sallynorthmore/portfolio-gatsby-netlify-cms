@@ -46,14 +46,15 @@
 	padding: 4vw;
 
 .Banner
-	position: fixed;
 	background: rgba(255, 255, 255, 0.8);
+	display: flex;
+	justify-content: space-between
 	left: 0;
-	padding: 4vw 0 0 4vw;
+	padding: 4vw 4vw 0;
+	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 1
-
 
 // HomePage
 //
@@ -128,6 +129,12 @@
 	justify-content: center;
 	text-decoration: none;
 
+	&:hover
+		cursor: pointer
+
+		& .Grid-title::before
+			opacity: 1;
+
 .Grid-title
 	color: rgb(76, 76, 76);
 	font-size: 13px;
@@ -145,12 +152,6 @@
 		opacity: 0;
 		content: "☞"
 		margin-left: -20px;
-
-	&:hover
-		cursor: pointer
-
-		&::before
-			opacity: 1;
 
 .Grid-subtitle
 	color: rgb(187, 187, 187);

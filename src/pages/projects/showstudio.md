@@ -2,8 +2,8 @@
 templateKey: project
 title: SHOWstudio
 date: 2014-07-20T14:12:00.000Z
-client: SHOWstudio + Various
-description: Frontend developer for fashion photographer Nick Knight's online platform for fashion film, art + ecommerce from 2009 to 2014.
+client: SHOWstudio and Various
+description: Frontend developer for fashion photographer Nick Knights online platform for fashion film, art and ecommerce from 2009 to 2014.
 tags:
   - JavaScript
   - CSS

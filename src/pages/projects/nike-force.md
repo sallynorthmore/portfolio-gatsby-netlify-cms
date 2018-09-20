@@ -2,8 +2,8 @@
 templateKey: project
 title: Nike Force
 date: 2017-09-01T13:33:44.138Z
-client: Nike for Made by Blah
-description: Frontend build of static web site for London-based Nike photography project.
+client: Made by Blah for Nike
+description: Frontend build of static web site for London based Nike photography project.
 tags:
   - JavaScript
   - CSS
