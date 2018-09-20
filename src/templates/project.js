@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
+import Footer from '../components/Footer';
 
 export const ProjectTemplate = ({
 	client,
@@ -31,15 +32,13 @@ export const ProjectTemplate = ({
 				<p className="Project-description">{description}</p>
 			</header>
 
-			<div className="Project-body">
+			<div id="content" className="Project-body">
 				<PostContent content={content} />
 				{tags && tags.length ? (
 					<ul className="Tags">
 						{tags.map(tag => (
 							<li key={tag + `tag`} className="Tags-item">
-								<Link to={`/tags/${kebabCase(tag)}/`} className="Tags-link">
-									{tag}
-								</Link>
+								<span className="Tags-link">{tag}</span>
 							</li>
 						))}
 					</ul>
@@ -62,6 +61,8 @@ export const ProjectTemplate = ({
 					)}
 				</div>
 			</div>
+
+			<Footer anchor="#content" />
 		</section>
 	);
 };
