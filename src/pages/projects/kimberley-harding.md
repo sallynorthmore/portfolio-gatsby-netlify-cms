@@ -1,8 +1,9 @@
 ---
 templateKey: project
 title: Kimberley Harding
-date: 2015-12-20T15:03:00.000Z
-description: Kimberley Harding
+date: 2014-12-20T15:03:00.000Z
+client: Kimberley Harding
+description: Frontend Development of a portfolio site for set designer Kim Harding.
 tags:
   - JavaScript
   - CSS
@@ -14,8 +15,7 @@ tags:
   - NPM
   - PostCSS
 ---
-![](/img/harding.png)
 
-Frontend Development of a portfolio site for set designer Kim Harding.
+![](/img/harding.png)
 
 http://http//kimberleyharding.com/

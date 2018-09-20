@@ -1,74 +1,82 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { kebabCase } from 'lodash';
 import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
+import Footer from '../components/Footer';
 
 export const ProjectTemplate = ({
+	client,
 	content,
 	contentComponent,
+	date,
 	description,
+	next,
+	prev,
 	tags,
 	title,
-	helmet,
-	prev,
-	next,
 }) => {
 	const PostContent = contentComponent || Content;
 
 	return (
 		<section className="Project">
-			{helmet || ''}
+			<Helmet title={`Project: ${title}`} />
 
 			<header className="Project-header">
-				<h1 className="Project-title">{title}</h1>
+				<h1 className="Project-title">
+					{title}
+					<span className="Project-client">{client}</span>
+				</h1>
 				<p className="Project-description">{description}</p>
-				<p className="Project-date">date</p>
 			</header>
 
-			<div className="Project-body">
+			<div id="content" className="Project-body">
 				<PostContent content={content} />
 				{tags && tags.length ? (
 					<ul className="Tags">
 						{tags.map(tag => (
 							<li key={tag + `tag`} className="Tags-item">
-								<Link to={`/tags/${kebabCase(tag)}/`} className="Tags-link">
-									{tag}
-								</Link>
+								<span className="Tags-link">{tag}</span>
 							</li>
 						))}
 					</ul>
 				) : null}
+
+				<p className="Project-date">{date}</p>
 			</div>
 
 			<div className="Project-navigation">
 				<div className="Nav">
 					{prev && (
 						<Link to={prev.fields.slug} className="Nav-link">
-							<abbrev title="Previous project">⇦</abbrev>
+							<abbr title="Previous project">⇦</abbr>
 						</Link>
 					)}
 					{next && (
 						<Link to={next.fields.slug} className="Nav-link">
-							<abbrev title="Next project">⇨</abbrev>
+							<abbr title="Next project">⇨</abbr>
 						</Link>
 					)}
 				</div>
 			</div>
+
+			<Footer anchor="#content" />
 		</section>
 	);
 };
 
 ProjectTemplate.propTypes = {
+	client: PropTypes.string,
 	content: PropTypes.node.isRequired,
 	contentComponent: PropTypes.func,
+	date: PropTypes.string,
 	description: PropTypes.string,
-	title: PropTypes.string,
 	helmet: PropTypes.instanceOf(Helmet),
-	prev: PropTypes.node,
-	next: PropTypes.node,
+	next: PropTypes.object,
+	prev: PropTypes.object,
+	title: PropTypes.string,
+	tags: PropTypes.node,
 };
 
 const ProjectPost = ({ data, pageContext }) => {
@@ -78,12 +86,13 @@ const ProjectPost = ({ data, pageContext }) => {
 	return (
 		<Layout>
 			<ProjectTemplate
-				prev={prev}
-				next={next}
+				client={post.frontmatter.client}
 				content={post.html}
 				contentComponent={HTMLContent}
+				date={post.frontmatter.date}
 				description={post.frontmatter.description}
-				helmet={<Helmet title={`Project: ${post.frontmatter.title}`} />}
+				next={next}
+				prev={prev}
 				tags={post.frontmatter.tags}
 				title={post.frontmatter.title}
 			/>
@@ -110,6 +119,7 @@ export const pageQuery = graphql`
 				title
 				description
 				tags
+				client
 			}
 		}
 	}

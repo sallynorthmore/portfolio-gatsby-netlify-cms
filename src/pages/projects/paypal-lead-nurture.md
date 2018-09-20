@@ -2,7 +2,8 @@
 templateKey: project
 title: PayPal Lead Nurture
 date: 2016-05-20T14:02:00.000Z
-description: Lewis Purestone + PayPal
+client: Lewis Purestone for PayPal
+description: Various templated marketing microsite UI builds for leading online payment platform.
 tags:
   - JavaScript
   - CSS
@@ -13,6 +14,5 @@ tags:
   - NPM
   - PostCSS
 ---
-![](/img/paypal.jpg)
 
-Various templated marketing microsite UI builds for leading online payment platform.
+![](/img/paypal.jpg)

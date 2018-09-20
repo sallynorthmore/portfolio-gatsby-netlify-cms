@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
+import Footer from '../components/Footer';
 
 export default class IndexPage extends React.Component {
 	render() {
@@ -12,19 +13,22 @@ export default class IndexPage extends React.Component {
 			<Layout layoutClass="HomePage">
 				<h1 className="HomePage-headline">
 					<span>
-						I&rsquo;m a freelance frontend developer living and working in
+						I&rsquo;m a freelance frontend web developer living and working in
 						London
 					</span>
 				</h1>
-				<section className="HomePage-projects">
-					<h2 className="Title">Some things I've built</h2>
-					<div>⇩</div>
+				<section id="projects" className="HomePage-projects">
+					<h2 className="Title">
+						<a className="Title-link" href="#projects">
+							Some things I&rsquo;ve built
+						</a>
+					</h2>
 
 					<div className="Grid">
 						{posts.map(({ node: post }) => (
 							<div className="Grid-item" key={post.id}>
-								<Link className="Grid-title" to={post.fields.slug}>
-									{post.frontmatter.title}
+								<Link className="Grid-inner" to={post.fields.slug}>
+									<h3 className="Grid-title">{post.frontmatter.title}</h3>
 									<div className="Grid-subtitle">{post.frontmatter.date}</div>
 									<div className="Grid-excerpt">{post.excerpt}</div>
 								</Link>
@@ -32,6 +36,7 @@ export default class IndexPage extends React.Component {
 						))}
 					</div>
 				</section>
+				<Footer anchor="#projects" />
 			</Layout>
 		);
 	}
