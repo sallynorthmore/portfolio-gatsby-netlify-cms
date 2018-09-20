@@ -12,7 +12,6 @@ export const ProjectTemplate = ({
 	contentComponent,
 	date,
 	description,
-	helmet,
 	next,
 	prev,
 	tags,
@@ -22,7 +21,7 @@ export const ProjectTemplate = ({
 
 	return (
 		<section className="Project">
-			{helmet || ''}
+			<Helmet title={`Project: ${title}`} />
 
 			<header className="Project-header">
 				<h1 className="Project-title">
@@ -92,7 +91,6 @@ const ProjectPost = ({ data, pageContext }) => {
 				contentComponent={HTMLContent}
 				date={post.frontmatter.date}
 				description={post.frontmatter.description}
-				helmet={<Helmet title={`Project: ${post.frontmatter.title}`} />}
 				next={next}
 				prev={prev}
 				tags={post.frontmatter.tags}
