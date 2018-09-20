@@ -13,7 +13,7 @@ export default class IndexPage extends React.Component {
 			<Layout layoutClass="HomePage">
 				<h1 className="HomePage-headline">
 					<span>
-						I&rsquo;m a freelance frontend developer living and working in
+						I&rsquo;m a freelance frontend web developer living and working in
 						London
 					</span>
 				</h1>

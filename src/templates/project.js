@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { kebabCase } from 'lodash';
 import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
@@ -20,14 +19,15 @@ export const ProjectTemplate = ({
 	title,
 }) => {
 	const PostContent = contentComponent || Content;
-	console.log(date);
+
 	return (
 		<section className="Project">
 			{helmet || ''}
 
 			<header className="Project-header">
 				<h1 className="Project-title">
-					{title} | {client}
+					{title}
+					<span className="Project-client">{client}</span>
 				</h1>
 				<p className="Project-description">{description}</p>
 			</header>
@@ -51,12 +51,12 @@ export const ProjectTemplate = ({
 				<div className="Nav">
 					{prev && (
 						<Link to={prev.fields.slug} className="Nav-link">
-							<abbrev title="Previous project">⇦</abbrev>
+							<abbr title="Previous project">⇦</abbr>
 						</Link>
 					)}
 					{next && (
 						<Link to={next.fields.slug} className="Nav-link">
-							<abbrev title="Next project">⇨</abbrev>
+							<abbr title="Next project">⇨</abbr>
 						</Link>
 					)}
 				</div>
@@ -68,13 +68,16 @@ export const ProjectTemplate = ({
 };
 
 ProjectTemplate.propTypes = {
+	client: PropTypes.string,
 	content: PropTypes.node.isRequired,
 	contentComponent: PropTypes.func,
+	date: PropTypes.string,
 	description: PropTypes.string,
-	title: PropTypes.string,
 	helmet: PropTypes.instanceOf(Helmet),
-	prev: PropTypes.node,
 	next: PropTypes.node,
+	prev: PropTypes.node,
+	title: PropTypes.string,
+	tags: PropTypes.node,
 };
 
 const ProjectPost = ({ data, pageContext }) => {
