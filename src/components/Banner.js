@@ -4,13 +4,14 @@ import { Link } from 'gatsby';
 
 const Banner = () => (
 	<header className="Banner">
-		<Link to="/" className="Title">
+		<Link to="/" className="Banner-title">
 			Sally Northmore
 		</Link>
 		<a
 			href="https://www.linkedin.com/in/sally-northmore-5568489/"
 			target="_blank"
-			className="Title"
+			rel="noreferrer noopener"
+			className="Banner-link"
 		>
 			Contact
 		</a>
