@@ -1,8 +1,10 @@
 ---
 templateKey: project
 title: Boden Styleguide
+client: Bartle Bogle & Hegarty London + Boden
 date: 2017-05-01T13:53:16.602Z
-description: Bartle Bogle & Hegarty London + Boden
+description: Creation of a Frontend PatternLab component library (Gulp+Mustache flavour) for
+a retail redesign + documentation.
 tags:
   - JavaScript ES6
   - CSS
@@ -16,6 +18,3 @@ tags:
 ---
 
 ![](/img/boden.jpg)
-
-Creation of a Frontend PatternLab component library (Gulp+Mustache flavour) for
-a retail redesign + documentation.

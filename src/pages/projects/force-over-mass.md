@@ -2,7 +2,8 @@
 templateKey: project
 title: Force Over Mass
 date: 2015-10-19T14:05:00.000Z
-description: Ideas Made Digital Ltd + Force Over Mass Capital
+client: Ideas Made Digital Ltd + Force Over Mass Capital
+description: Contributed to Front end build and styling of CraftPHP project
 tags:
   - JavaScript
   - CSS
@@ -14,8 +15,7 @@ tags:
   - Photoshop
   - Vagrant
 ---
-![](/img/fom02.png)
 
-Contributed to Front end build and styling of CraftPHP project
+![](/img/fom02.png)
 
 <http://fomcap.com/>
