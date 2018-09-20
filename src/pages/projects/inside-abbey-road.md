@@ -1,7 +1,7 @@
 ---
 templateKey: project
 title: Inside Abbey Road
-date: 2018-09-20T14:09:10.658Z
+date: 2014-09-20T14:09:00.000Z
 description: Stink Studio + Google
 tags:
   - JavaScript
