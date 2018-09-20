@@ -9,9 +9,15 @@ export default class IndexPage extends React.Component {
 		const { edges: posts } = data.allMarkdownRemark;
 
 		return (
-			<Layout>
-				<section className="section">
-					<h2>Projects</h2>
+			<Layout layoutClass="HomePage">
+				<h1 className="HomePage-headline">
+					<span>
+						I&rsquo;m a freelance frontend developer living and working in
+						London
+					</span>
+				</h1>
+				<section className="HomePage-projects">
+					<h2 className="Title">Some things I've built</h2>
 
 					<div className="Projects">
 						{posts.map(({ node: post }) => (
@@ -21,7 +27,7 @@ export default class IndexPage extends React.Component {
 								key={post.id}
 							>
 								<p>
-									<Link className="has-text-primary" to={post.fields.slug}>
+									<Link className="Title" to={post.fields.slug}>
 										{post.frontmatter.title}
 									</Link>
 									<span> &bull; </span>

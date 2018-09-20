@@ -4,11 +4,17 @@ import { Link } from 'gatsby';
 
 const Banner = () => (
 	<header className="Banner">
-		<h1>Sally Northmore</h1>
-		<p>Frontend Web Developer</p>
-		{/* <img src={logo} alt="Kaldi" style={{ width: '88px' }} /> */}
-		<Link to="/about">About</Link>
+		<Link to="/" className="Title">
+			Sally Northmore
+		</Link>
 	</header>
 );
+
+// <Link to="/contact" className="Title">
+// 	Contact
+// </Link>
+// <Link to="/about" className="Title">
+// 	About
+// </Link>
 
 export default Banner;
