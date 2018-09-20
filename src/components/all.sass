@@ -33,11 +33,11 @@
 
 
 .Caption
+	color: rgb(187, 187, 187);
+	font-size: 12px;
 	font-weight: 400;
 	letter-spacing: .04em;
 	line-height: 18px;
-	color: rgb(187, 187, 187);
-	font-size: 12px;
 
 // Chrome
 //
@@ -52,6 +52,7 @@
 	padding: 4vw 0 0 4vw;
 	top: 0;
 	width: 100%;
+	z-index: 1
 
 
 // HomePage
@@ -125,6 +126,94 @@
 	color: rgb(187, 187, 187);
 	font-size: 12px;
 	display: none;
+
+// ProjectPage
+//
+.Project
+	position: relative
+
+.Project-header
+	align-items: center
+	display: flex
+	flex-direction: column
+	height: 100vh
+	justify-content: center
+	text-align: center
+
+.Project-title
+	font-size: 14px;
+	font-weight: 900;
+	letter-spacing: .1em;
+	line-height: 1.3;
+	text-decoration: none;
+	text-transform: uppercase;
+
+.Project-description
+	color: #333;
+	font-family: "adobe-garamond-pro";
+	font-size: 25px;
+	font-weight: 600;
+	letter-spacing: -.01em;
+	line-height: 1.3;
+	margin-top: 6vw;
+	width: 75%;
+
+.Project-date
+	color: rgb(187, 187, 187);
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: .04em;
+	line-height: 18px;
+	margin-top: 6vw;
+
+.Project-navigation
+	top: 0;
+	left: 0
+	width: 100%
+	// margin-top: 10vw
+
+.Nav
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+.Nav-link
+	position: absolute
+	top: 50vh
+	text-decoration: none
+	display: block
+	width: 40px
+	height: 100%;
+	opacity: 0.6
+	left: 0
+
+	&:nth-child(2)
+		text-align: right
+		left: auto
+		right: 0
+
+.Tags
+	margin-top: 6vw;
+
+.Tags-item
+	color: rgb(187, 187, 187);
+	display: inline-block
+
+	&:not(:last-child)
+		margin-right: 4px
+		&::after
+			color: inherit
+			content: ', '
+			display: inline
+
+.Tags-link
+	color: rgb(187, 187, 187);
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: .04em;
+	line-height: 18px;
+	text-decoration: none
+
 
 // @import "~bulma/sass/utilities/initial-variables"
 //

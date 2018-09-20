@@ -19,28 +19,44 @@ export const ProjectTemplate = ({
 	const PostContent = contentComponent || Content;
 
 	return (
-		<section className="ProjectTemplate">
+		<section className="Project">
 			{helmet || ''}
 
-			<h1>{title}</h1>
-			<p>{description}</p>
-			<PostContent content={content} />
+			<header className="Project-header">
+				<h1 className="Project-title">{title}</h1>
+				<p className="Project-description">{description}</p>
+				<p className="Project-date">date</p>
+			</header>
 
-			{prev && <Link to={prev.fields.slug}>&lsquo; prev</Link>}
-			{next && <Link to={next.fields.slug}> next &rsquo;</Link>}
-
-			{tags && tags.length ? (
-				<div style={{ marginTop: `4rem` }}>
-					<h4>Tags</h4>
-					<ul className="taglist">
+			<div className="Project-body">
+				<PostContent content={content} />
+				{tags && tags.length ? (
+					<ul className="Tags">
 						{tags.map(tag => (
-							<li key={tag + `tag`}>
-								<Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+							<li key={tag + `tag`} className="Tags-item">
+								<Link to={`/tags/${kebabCase(tag)}/`} className="Tags-link">
+									{tag}
+								</Link>
 							</li>
 						))}
 					</ul>
+				) : null}
+			</div>
+
+			<div className="Project-navigation">
+				<div className="Nav">
+					{prev && (
+						<Link to={prev.fields.slug} className="Nav-link">
+							<abbrev title="Previous project">⇦</abbrev>
+						</Link>
+					)}
+					{next && (
+						<Link to={next.fields.slug} className="Nav-link">
+							<abbrev title="Next project">⇨</abbrev>
+						</Link>
+					)}
 				</div>
-			) : null}
+			</div>
 		</section>
 	);
 };
