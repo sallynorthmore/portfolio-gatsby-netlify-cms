@@ -7,15 +7,16 @@ import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
 
 export const ProjectTemplate = ({
+	client,
 	content,
 	contentComponent,
+	date,
 	description,
+	helmet,
+	next,
+	prev,
 	tags,
 	title,
-	helmet,
-	prev,
-	next,
-	date,
 }) => {
 	const PostContent = contentComponent || Content;
 	console.log(date);
@@ -24,7 +25,9 @@ export const ProjectTemplate = ({
 			{helmet || ''}
 
 			<header className="Project-header">
-				<h1 className="Project-title">{title}</h1>
+				<h1 className="Project-title">
+					{title} | {client}
+				</h1>
 				<p className="Project-description">{description}</p>
 			</header>
 
@@ -80,13 +83,14 @@ const ProjectPost = ({ data, pageContext }) => {
 	return (
 		<Layout>
 			<ProjectTemplate
-				date={post.frontmatter.date}
-				prev={prev}
-				next={next}
+				client={post.frontmatter.client}
 				content={post.html}
 				contentComponent={HTMLContent}
+				date={post.frontmatter.date}
 				description={post.frontmatter.description}
 				helmet={<Helmet title={`Project: ${post.frontmatter.title}`} />}
+				next={next}
+				prev={prev}
 				tags={post.frontmatter.tags}
 				title={post.frontmatter.title}
 			/>
@@ -113,6 +117,7 @@ export const pageQuery = graphql`
 				title
 				description
 				tags
+				client
 			}
 		}
 	}
