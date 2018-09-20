@@ -1,7 +1,7 @@
 ---
 templateKey: project
 title: SHOWstudio
-date: 2015-07-20T14:12:00.000Z
+date: 2014-07-20T14:12:00.000Z
 description: SHOWstudio + Various
 tags:
   - JavaScript
