@@ -73,8 +73,8 @@ ProjectTemplate.propTypes = {
 	date: PropTypes.string,
 	description: PropTypes.string,
 	helmet: PropTypes.instanceOf(Helmet),
-	next: PropTypes.node,
-	prev: PropTypes.node,
+	next: PropTypes.object,
+	prev: PropTypes.object,
 	title: PropTypes.string,
 	tags: PropTypes.node,
 };
