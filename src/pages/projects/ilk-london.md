@@ -1,7 +1,7 @@
 ---
 templateKey: project
 title: ilk London
-date: 2018-09-20T13:59:10.680Z
+date: 2016-09-20T13:59:10.680Z
 description: BBH London + ilk
 tags:
   - Magento (PHP/XML)
@@ -13,8 +13,10 @@ tags:
   - RequireJS
   - Vagrant
 ---
+
 ![](/img/ilk.jpg)
 
-Established a Frontend theme and component library for a Magento ecommerce web site
+Established a Frontend theme and component library for a Magento ecommerce web
+site
 
 <http://www.ilklondon.com/>

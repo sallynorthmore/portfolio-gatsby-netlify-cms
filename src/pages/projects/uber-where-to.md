@@ -1,7 +1,7 @@
 ---
 templateKey: project
 title: 'Uber: Where To'
-date: 2018-09-20T13:51:40.218Z
+date: 2017-10-20T13:51:40.218Z
 description: Bartle Bogle & Hegarty London + Uber
 tags:
   - JavaScript
@@ -16,8 +16,10 @@ tags:
   - NPM
   - Yarn
 ---
-Responsive UX build of static FAQs web site for Uber. CSS & JavaScript Animation-heavy one-page UX.
 
 ![](/img/uber.jpg)
+
+Responsive UX build of static FAQs web site for Uber. CSS & JavaScript
+Animation-heavy one-page UX.
 
 http://https//www.uber.com/info/whereto/
