@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
-import Banner from '../components/Banner';
+import Banner from '../Banner';
 
 // import Social from '../components/Social';
-import './all.sass';
+import '../all.sass';
 
 const TemplateWrapper = ({ children, layoutClass }) => (
 	<div className="Chrome">
