@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FooterComponent, Inner, Anchor } from './styles';
 
 class Footer extends React.Component {
 	state = {
@@ -26,15 +27,13 @@ class Footer extends React.Component {
 		const { isVisible } = this.state;
 
 		return (
-			<div className="Footer">
+			<FooterComponent>
 				{isVisible && (
-					<div className="Footer-inner">
-						<a href={anchor} className="Footer-arrow">
-							⇩
-						</a>
-					</div>
+					<Inner>
+						<Anchor href={anchor}>⇩</Anchor>
+					</Inner>
 				)}
-			</div>
+			</FooterComponent>
 		);
 	}
 }

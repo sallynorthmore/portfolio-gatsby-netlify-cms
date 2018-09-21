@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
+import { ProjectLinksComponent, Button } from './styles';
 
 class ProjectLinks extends React.Component {
 	componentDidMount = () => {
@@ -27,18 +28,18 @@ class ProjectLinks extends React.Component {
 		const { previous, next } = this.props;
 
 		return (
-			<div className="ProjectLinks">
+			<ProjectLinksComponent>
 				{previous && (
-					<Link to={previous.fields.slug} className="ProjectLinks-link">
+					<Button to={previous.fields.slug}>
 						<abbr title="Previous project">⇦</abbr>
-					</Link>
+					</Button>
 				)}
 				{next && (
-					<Link to={next.fields.slug} className="ProjectLinks-link">
+					<Button to={next.fields.slug}>
 						<abbr title="Next project">⇨</abbr>
-					</Link>
+					</Button>
 				)}
-			</div>
+			</ProjectLinksComponent>
 		);
 	}
 }

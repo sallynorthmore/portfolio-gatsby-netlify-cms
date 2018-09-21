@@ -1,85 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import PageTransition from 'gatsby-plugin-page-transitions';
+import { HTMLContent } from '../components/Content';
 
 import Layout from '../components/Layout';
-import Content, { HTMLContent } from '../components/Content';
-import Footer from '../components/Footer';
-import ProjectLinks from '../components/ProjectLinks';
+import Project from '../components/Project';
 
-export const ProjectTemplate = ({
-	client,
-	content,
-	contentComponent,
-	date,
-	description,
-	next,
-	previous,
-	tags,
-	title,
-}) => {
-	const PostContent = contentComponent || Content;
-
-	return (
-		<PageTransition>
-			<section className="Project">
-				<Helmet title={`Project: ${title}`} />
-
-				<header className="Project-header">
-					<h1 className="Project-title">
-						{title}
-						<span className="Project-client">{client}</span>
-					</h1>
-					<p className="Project-description">{description}</p>
-				</header>
-
-				<div id="content" className="Project-body">
-					<PostContent content={content} />
-					{tags && tags.length ? (
-						<ul className="Tags">
-							{tags.map(tag => (
-								<li key={tag + `tag`} className="Tags-item">
-									<span className="Tags-link">{tag}</span>
-								</li>
-							))}
-						</ul>
-					) : null}
-
-					<p className="Project-date">{date}</p>
-				</div>
-
-				<div className="Project-navigation">
-					<ProjectLinks previous={previous} next={next} />
-				</div>
-
-				<Footer anchor="#content" />
-			</section>
-		</PageTransition>
-	);
-};
-
-ProjectTemplate.propTypes = {
-	client: PropTypes.string,
-	content: PropTypes.node.isRequired,
-	contentComponent: PropTypes.func,
-	date: PropTypes.string,
-	description: PropTypes.string,
-	helmet: PropTypes.instanceOf(Helmet),
-	next: PropTypes.object,
-	previous: PropTypes.object,
-	title: PropTypes.string,
-	tags: PropTypes.node,
-};
-
-const ProjectPost = ({ data, pageContext }) => {
+const ProjectPage = ({ data, pageContext }) => {
 	const { markdownRemark: post } = data;
 	const { prev, next } = pageContext;
 
 	return (
 		<Layout>
-			<ProjectTemplate
+			<Project
 				client={post.frontmatter.client}
 				content={post.html}
 				contentComponent={HTMLContent}
@@ -94,14 +27,14 @@ const ProjectPost = ({ data, pageContext }) => {
 	);
 };
 
-ProjectPost.propTypes = {
+ProjectPage.propTypes = {
 	data: PropTypes.shape({
 		markdownRemark: PropTypes.object,
 	}),
 	pageContext: PropTypes.object,
 };
 
-export default ProjectPost;
+export default ProjectPage;
 
 export const pageQuery = graphql`
 	query ProjectByID($id: String!) {
