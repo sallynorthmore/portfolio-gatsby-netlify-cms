@@ -4,7 +4,7 @@ import { Link, navigate } from 'gatsby';
 
 class ProjectLinks extends React.Component {
 	componentDidMount = () => {
-		document.addEventListener('keydown', this.handleKeyDown, false);
+		window.addEventListener('keydown', this.handleKeyDown, false);
 	};
 
 	componentWillUnmount() {
