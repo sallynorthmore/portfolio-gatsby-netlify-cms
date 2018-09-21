@@ -26,9 +26,11 @@ class Footer extends React.Component {
 		return (
 			<div className="Footer">
 				{isVisible && (
-					<a href={anchor} className="Footer-arrow">
-						⇩
-					</a>
+					<div className="Footer-inner">
+						<a href={anchor} className="Footer-arrow">
+							⇩
+						</a>
+					</div>
 				)}
 			</div>
 		);
