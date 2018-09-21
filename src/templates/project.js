@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
+import PageTransition from 'gatsby-plugin-page-transitions';
+
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
 import Footer from '../components/Footer';
@@ -21,38 +23,40 @@ export const ProjectTemplate = ({
 	const PostContent = contentComponent || Content;
 
 	return (
-		<section className="Project">
-			<Helmet title={`Project: ${title}`} />
+		<PageTransition>
+			<section className="Project">
+				<Helmet title={`Project: ${title}`} />
 
-			<header className="Project-header">
-				<h1 className="Project-title">
-					{title}
-					<span className="Project-client">{client}</span>
-				</h1>
-				<p className="Project-description">{description}</p>
-			</header>
+				<header className="Project-header">
+					<h1 className="Project-title">
+						{title}
+						<span className="Project-client">{client}</span>
+					</h1>
+					<p className="Project-description">{description}</p>
+				</header>
 
-			<div id="content" className="Project-body">
-				<PostContent content={content} />
-				{tags && tags.length ? (
-					<ul className="Tags">
-						{tags.map(tag => (
-							<li key={tag + `tag`} className="Tags-item">
-								<span className="Tags-link">{tag}</span>
-							</li>
-						))}
-					</ul>
-				) : null}
+				<div id="content" className="Project-body">
+					<PostContent content={content} />
+					{tags && tags.length ? (
+						<ul className="Tags">
+							{tags.map(tag => (
+								<li key={tag + `tag`} className="Tags-item">
+									<span className="Tags-link">{tag}</span>
+								</li>
+							))}
+						</ul>
+					) : null}
 
-				<p className="Project-date">{date}</p>
-			</div>
+					<p className="Project-date">{date}</p>
+				</div>
 
-			<div className="Project-navigation">
-				<ProjectLinks previous={previous} next={next} />
-			</div>
+				<div className="Project-navigation">
+					<ProjectLinks previous={previous} next={next} />
+				</div>
 
-			<Footer anchor="#content" />
-		</section>
+				<Footer anchor="#content" />
+			</section>
+		</PageTransition>
 	);
 };
 
