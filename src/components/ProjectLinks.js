@@ -7,9 +7,9 @@ class ProjectLinks extends React.Component {
 		document.addEventListener('keydown', this.handleKeyDown, false);
 	};
 
-	// componentDidUnMount = () => {
-	// 	document.removeEventListener('keydown', this.handleKeyDown);
-	// };
+	componentWillUnmount() {
+		window.removeEventListener('keydown', this.handleKeyDown);
+	}
 
 	goNext = () => navigate(this.props.next.fields.slug);
 

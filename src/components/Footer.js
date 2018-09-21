@@ -10,13 +10,15 @@ class Footer extends React.Component {
 		window.addEventListener('scroll', this.handleScroll);
 	}
 
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.handleScroll);
+	}
+
 	// Hide arrow
 	handleScroll = () => {
 		this.setState({
 			isVisible: false,
 		});
-
-		window.removeEventListener('scroll', this.handleScroll);
 	};
 
 	render() {
