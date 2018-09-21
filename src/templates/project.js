@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
 import Footer from '../components/Footer';
+import ProjectLinks from '../components/ProjectLinks';
 
 export const ProjectTemplate = ({
 	client,
@@ -13,7 +14,7 @@ export const ProjectTemplate = ({
 	date,
 	description,
 	next,
-	prev,
+	previous,
 	tags,
 	title,
 }) => {
@@ -47,18 +48,7 @@ export const ProjectTemplate = ({
 			</div>
 
 			<div className="Project-navigation">
-				<div className="Nav">
-					{prev && (
-						<Link to={prev.fields.slug} className="Nav-link">
-							<abbr title="Previous project">⇦</abbr>
-						</Link>
-					)}
-					{next && (
-						<Link to={next.fields.slug} className="Nav-link">
-							<abbr title="Next project">⇨</abbr>
-						</Link>
-					)}
-				</div>
+				<ProjectLinks previous={previous} next={next} />
 			</div>
 
 			<Footer anchor="#content" />
@@ -74,7 +64,7 @@ ProjectTemplate.propTypes = {
 	description: PropTypes.string,
 	helmet: PropTypes.instanceOf(Helmet),
 	next: PropTypes.object,
-	prev: PropTypes.object,
+	previous: PropTypes.object,
 	title: PropTypes.string,
 	tags: PropTypes.node,
 };
@@ -92,7 +82,7 @@ const ProjectPost = ({ data, pageContext }) => {
 				date={post.frontmatter.date}
 				description={post.frontmatter.description}
 				next={next}
-				prev={prev}
+				previous={prev}
 				tags={post.frontmatter.tags}
 				title={post.frontmatter.title}
 			/>
