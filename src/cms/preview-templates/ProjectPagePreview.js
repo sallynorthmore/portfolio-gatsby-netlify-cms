@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ProjectTemplate } from '../../templates/project';
+import { ProjectPage } from '../../templates/project';
 
 const ProjectPagePreview = ({ entry, widgetFor }) => (
-	<ProjectTemplate
+	<ProjectPage
 		content={widgetFor('body')}
 		description={entry.getIn(['data', 'description'])}
 		tags={entry.getIn(['data', 'tags'])}
