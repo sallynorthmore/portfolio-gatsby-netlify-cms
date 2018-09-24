@@ -1,12 +1,11 @@
 import React from 'react';
 // import { Link } from 'gatsby';
 // import logo from '../img/logo.svg'
-import { ContactFormComponent } from './styles';
+import { ContactFormComponent, Form } from './styles';
 
 const ContactForm = () => (
 	<ContactFormComponent>
-		<h2>ContactForm</h2>
-		<form
+		<Form
 			data-netlify-honeypot="bot-field"
 			data-netlify="true"
 			method="post"
@@ -19,7 +18,7 @@ const ContactForm = () => (
 			<label htmlFor="message">Your message</label>
 			<textarea name="message" />
 			<button>Send</button>
-		</form>
+		</Form>
 	</ContactFormComponent>
 );
 
