@@ -8,6 +8,7 @@ const ContactForm = () => (
 			method="POST"
 			netlify="true"
 			netlify-honeypot="bot-field"
+			action="/success"
 		>
 			<input type="hidden" name="bot-field" />
 			<p>

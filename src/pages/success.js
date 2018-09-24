@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 
-const SuccessPage = () => (
+const Success = () => (
 	<Layout>
 		<div>
 			<h1>Success!</h1>
@@ -10,4 +10,4 @@ const SuccessPage = () => (
 	</Layout>
 );
 
-export default SuccessPage;
+export default Success;
