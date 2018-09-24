@@ -3,7 +3,6 @@ module.exports = {
 		title: 'A portfolio',
 	},
 	plugins: [
-		// 'gatsby-plugin-page-transitions',
 		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-sass',
 		{
