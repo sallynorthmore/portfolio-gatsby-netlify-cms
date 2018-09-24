@@ -1,12 +1,10 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import { default as SuccessPage } from '../components/Success';
 
 const Success = () => (
 	<Layout>
-		<div>
-			<h1>Success!</h1>
-			<p>Thank you for your message</p>
-		</div>
+		<SuccessPage />
 	</Layout>
 );
 
