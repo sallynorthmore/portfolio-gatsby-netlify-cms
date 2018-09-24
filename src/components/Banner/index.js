@@ -8,18 +8,8 @@ const Banner = () => (
 		<Title>
 			<Link to="/">Sally Northmore</Link>
 		</Title>
-		<Contact
-			href="https://www.linkedin.com/in/sally-northmore-5568489/"
-			target="_blank"
-			rel="noreferrer noopener"
-		>
-			Contact
-		</Contact>
+		<Contact to="/contact">Contact</Contact>
 	</BannerComponent>
 );
-
-// <Link to="/about" className="Title">
-// 	About
-// </Link>
 
 export default Banner;

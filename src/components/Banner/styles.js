@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 export const BannerComponent = styled.header`
 	background: rgba(255, 255, 255, 0.8);
@@ -29,7 +30,7 @@ export const Title = styled.div`
 	}
 `;
 
-export const Contact = styled.a`
+export const Contact = styled(Link)`
 	color: rgb(34, 34, 34);
 	display: inline-block;
 	font-size: 13px;

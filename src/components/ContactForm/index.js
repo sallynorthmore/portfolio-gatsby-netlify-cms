@@ -1,8 +1,10 @@
 import React from 'react';
-// import { ContactFormComponent, Form } from './styles';
+import PropTypes from 'prop-types';
+import { ContactFormComponent, Title } from './styles';
 
-const ContactForm = () => (
-	<div>
+const ContactForm = ({ title }) => (
+	<ContactFormComponent>
+		<Title>{title}</Title>
 		<form
 			name="contact"
 			method="POST"
@@ -11,30 +13,26 @@ const ContactForm = () => (
 			action="/success"
 		>
 			<input type="hidden" name="bot-field" />
-			<p>
-				<label>
-					Your Name: <input type="text" name="name" />
-				</label>
-			</p>
-			<p>
-				<label>
-					Your Email: <input type="email" name="email" />
-				</label>
-			</p>
-			<p>
-				<label>
-					Message: <textarea name="message" />
-				</label>
-			</p>
-			<p>
-				<button type="submit">Send</button>
-			</p>
+
+			<label>
+				Your Name: <input type="text" name="name" />
+			</label>
+
+			<label>
+				Your Email: <input type="email" name="email" />
+			</label>
+
+			<label>
+				Message: <textarea name="message" />
+			</label>
+
+			<button type="submit">Send</button>
 		</form>
-	</div>
+	</ContactFormComponent>
 );
 
-// <Link to="/about" className="Title">
-// 	About
-// </Link>
+ContactForm.propTypes = {
+	title: PropTypes.string,
+};
 
 export default ContactForm;

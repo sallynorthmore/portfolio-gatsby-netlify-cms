@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const ContactFormComponent = styled.div`
 	display: block;
 	text-align: center;
-`;
 
-export const Form = styled.form`
-	display: block;
-	margin: 0 auto;
-	max-width: 420px;
-	width: 100%;
-	text-align: left;
+	& form {
+		display: block;
+		margin: 0 auto;
+		max-width: 420px;
+		width: 100%;
+		text-align: left;
+	}
 
 	& label,
 	& input {
@@ -41,4 +41,15 @@ export const Form = styled.form`
 		margin: 40px 0 0;
 		width: 100%;
 	}
+`;
+
+export const Title = styled.h2`
+	color: rgb(20, 20, 20);
+	font-family: 'adobe-garamond-pro';
+	font-size: 25px;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	line-height: 1.3;
+	margin: 6vw auto 0;
+	max-width: 400px;
 `;
