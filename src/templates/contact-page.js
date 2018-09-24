@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
-// import ContactForm from '../components/ContactForm';
+import ContactForm from '../components/ContactForm';
 
 export const ContactPageTemplate = ({ title, content, contentComponent }) => {
 	const PageContent = contentComponent || Content;
@@ -13,7 +13,7 @@ export const ContactPageTemplate = ({ title, content, contentComponent }) => {
 			<div>
 				<h2>{title}</h2>
 				<PageContent content={content} />
-				{/* <ContactForm /> */}
+				<ContactForm />
 			</div>
 		</section>
 	);

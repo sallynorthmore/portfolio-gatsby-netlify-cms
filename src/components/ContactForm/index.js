@@ -1,16 +1,15 @@
 import React from 'react';
-// import { Link } from 'gatsby';
-// import logo from '../img/logo.svg'
-import { ContactFormComponent, Form } from './styles';
+// import { ContactFormComponent, Form } from './styles';
 
 const ContactForm = () => (
-	<ContactFormComponent>
+	<div>
 		<form
 			name="contact"
 			method="POST"
 			netlify="true"
 			netlify-honeypot="bot-field"
 		>
+			<input type="hidden" name="bot-field" />
 			<p>
 				<label>
 					Your Name: <input type="text" name="name" />
@@ -23,15 +22,6 @@ const ContactForm = () => (
 			</p>
 			<p>
 				<label>
-					Your Role:{' '}
-					<select name="role[]" multiple>
-						<option value="leader">Leader</option>
-						<option value="follower">Follower</option>
-					</select>
-				</label>
-			</p>
-			<p>
-				<label>
 					Message: <textarea name="message" />
 				</label>
 			</p>
@@ -39,7 +29,7 @@ const ContactForm = () => (
 				<button type="submit">Send</button>
 			</p>
 		</form>
-	</ContactFormComponent>
+	</div>
 );
 
 // <Link to="/about" className="Title">
