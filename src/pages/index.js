@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import BaseStyles from '../components/BaseStyles';
 import Layout from '../components/Layout';
 import Home from '../components/Home';
+import ContactForm from '../components/ContactForm';
 
 BaseStyles();
 
@@ -16,6 +17,7 @@ export default class IndexPage extends React.Component {
 		return (
 			<Layout>
 				<Home projects={posts} />
+				<ContactForm />
 			</Layout>
 		);
 	}

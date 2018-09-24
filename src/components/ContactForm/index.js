@@ -5,7 +5,12 @@ import { ContactFormComponent, Form } from './styles';
 
 const ContactForm = () => (
 	<ContactFormComponent>
-		<form name="contact" method="POST" netlify>
+		<form
+			name="contact"
+			method="POST"
+			netlify="true"
+			netlify-honeypot="bot-field"
+		>
 			<p>
 				<label>
 					Your Name: <input type="text" name="name" />
