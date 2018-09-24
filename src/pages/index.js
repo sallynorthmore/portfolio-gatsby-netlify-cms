@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import PageTransition from 'gatsby-plugin-page-transitions';
+// import PageTransition from 'gatsby-plugin-page-transitions';
 import baseStyles from './styles';
 import Layout from '../components/Layout';
 import Home from '../components/Home';
@@ -14,11 +14,9 @@ export default class IndexPage extends React.Component {
 		const { edges: posts } = data.allMarkdownRemark;
 
 		return (
-			<PageTransition>
-				<Layout layoutClass="HomePage">
-					<Home projects={posts} />
-				</Layout>
-			</PageTransition>
+			<Layout layoutClass="HomePage">
+				<Home projects={posts} />
+			</Layout>
 		);
 	}
 }
