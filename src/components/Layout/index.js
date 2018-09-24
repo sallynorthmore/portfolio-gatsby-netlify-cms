@@ -7,12 +7,12 @@ import { LayoutComponent } from './styles';
 // import Social from '../components/Social';
 // import '../all.sass';
 
-const TemplateWrapper = ({ children, layoutClass }) => (
-	<LayoutComponent className="Chrome">
+const TemplateWrapper = ({ children }) => (
+	<LayoutComponent>
 		<Helmet title="Sally Northmore" />
 		<Banner />
 		{/*  <Social /> */}
-		<div className={layoutClass}>{children}</div>
+		<div>{children}</div>
 	</LayoutComponent>
 );
 

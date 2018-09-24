@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 // import PageTransition from 'gatsby-plugin-page-transitions';
-import baseStyles from './styles';
+import BaseStyles from '../components/BaseStyles';
 import Layout from '../components/Layout';
 import Home from '../components/Home';
 
-baseStyles();
+BaseStyles();
 
 export default class IndexPage extends React.Component {
 	render() {
@@ -14,7 +14,7 @@ export default class IndexPage extends React.Component {
 		const { edges: posts } = data.allMarkdownRemark;
 
 		return (
-			<Layout layoutClass="HomePage">
+			<Layout>
 				<Home projects={posts} />
 			</Layout>
 		);
