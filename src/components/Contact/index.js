@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Content from '../Content';
+// import Content from '../Content';
 import ContactForm from '../ContactForm';
 import { ContactComponent } from './styles';
 
 const Contact = ({ content, contentComponent }) => {
-	const PageContent = contentComponent || Content;
+	// const PageContent = contentComponent || Content;
 
 	return (
 		<ContactComponent>

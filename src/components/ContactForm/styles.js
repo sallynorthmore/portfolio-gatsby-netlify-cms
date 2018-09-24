@@ -12,35 +12,33 @@ export const ContactFormComponent = styled.div`
 		text-align: left;
 	}
 
-	& label,
-	& input {
-		display: block;
-		margin: 40px 0 0 0;
-		width: 100%;
-	}
-
 	& input {
 		border-bottom: 1px solid #ccc;
+		display: block;
 		font-size: 14px;
 		margin: 10px 0 0 0;
 		padding: 8px 0;
+		width: 100%;
 	}
 
 	& textarea {
 		border: 1px solid #ccc;
 		font-size: 14px;
 		margin: 10px 0 0 0;
+		min-height: 200px;
 		width: 100%;
 	}
+`;
 
-	& button {
-		display: block;
-		background: black;
-		color: white;
-		padding: 20px;
-		margin: 40px 0 0;
-		width: 100%;
-	}
+export const Label = styled.label`
+	display: block;
+	font-size: 13px;
+	font-weight: 900;
+	letter-spacing: 0.1em;
+	line-height: 1.3;
+	margin: 40px 0 0 0;
+	text-decoration: none;
+	text-transform: uppercase;
 `;
 
 export const Title = styled.h2`
@@ -52,4 +50,18 @@ export const Title = styled.h2`
 	line-height: 1.3;
 	margin: 6vw auto 0;
 	max-width: 400px;
+`;
+
+export const Button = styled.button`
+	background: black;
+	color: white;
+	display: block;
+	font-size: 13px;
+	font-weight: 900;
+	letter-spacing: 0.1em;
+	line-height: 1.3;
+	margin: 40px 0 0;
+	padding: 20px;
+	text-transform: uppercase;
+	width: 100%;
 `;
