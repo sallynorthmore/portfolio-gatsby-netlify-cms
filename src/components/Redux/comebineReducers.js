@@ -3,9 +3,6 @@ import { createStore, combineReducers } from 'redux';
 import expect from 'expect';
 import deepFreeze from 'deep-freeze';
 
-import Layout from '../components/Layout';
-import TodoApp from '../components/Redux';
-
 // My todos reducer
 const todos = (state = [], action) => {
 	switch (action.type) {
@@ -43,16 +40,30 @@ const visibilityFilter = (state = 'SHOW_ALL', action) => {
 	}
 };
 
+// Composition Pattern
+// This cobmines both the todos and visibilityFilter reducers into ONE piece of state
+// const todoApp = (state = {}, action) => {
+// 	return {
+// 		todos: todos(state.todos, action),
+// 		visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+// 	};
+// };
+
 // But actually, you just use combineReducers instead
 const todoApp = combineReducers({
-	todos,
-	visibilityFilter,
+	todos: todos,
+	visibilityFilter: visibilityFilter,
+	// stateName : reducerName
+	//
+	// Actually with ES6 you can just write this:
+	// todos, visibilityFilter
 });
 
-const store = createStore(
-	todoApp,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = createStore(todoApp);
+
+console.log('Initial state');
+console.log(store.getState);
+console.log('-------------------');
 
 const testToggleTodo = () => {
 	const stateBefore = [
@@ -117,16 +128,19 @@ const testAddTodo = () => {
 
 testAddTodo();
 testToggleTodo();
-
 console.log('All tests passed');
 
-const ReduxLesson = () => (
-	<Layout>
-		<TodoApp store={store} todos={store.getState().todos} />
-	</Layout>
-);
+console.log('Dispatching ADD_TODO');
 
-store.subscribe(ReduxLesson);
-ReduxLesson();
+store.dispatch({
+	type: 'ADD_TODO',
+	id: 0,
+	text: 'Learn Redux',
+});
 
-export default ReduxLesson;
+console.log('Current State');
+console.log(store.getState());
+
+const ToDoList = () => <div />;
+
+export default ToDoList;
