@@ -1,39 +1,101 @@
 import React from 'react';
 import { createStore } from 'redux';
-// import { ReduxComponent } from './styles';
+import expect from 'expect';
+import deepFreeze from 'deep-freeze';
 
-// This is a reducer
-const counter = (state = 0, action) => {
+// My todos reducer
+const todos = (state = [], action) => {
 	switch (action.type) {
-		case 'INCREMENT':
-			return state + 1;
-		case 'DECREMENT':
-			return state - 1;
+		case 'ADD_TODO':
+			return [
+				...state,
+				{
+					completed: false,
+					text: action.text,
+					id: action.id,
+				},
+			];
+		case 'TOGGLE_TODO':
+			return state.map(todo => {
+				if (todo.id !== action.id) {
+					return todo;
+				}
+
+				return {
+					...todo,
+					completed: !todo.completed,
+				};
+			});
 		default:
-			return state; // You must catch errors and just return the state
+			return state;
 	}
 };
 
-const Counter = ({ value, onIncrement, onDecrement }) => (
-	<div>
-		<h2>Value is {value}</h2>
-		<button onClick={onIncrement}>+</button>
-		<button onClick={onDecrement}>-</button>
-	</div>
-);
+const testToggleTodo = () => {
+	const stateBefore = [
+		{
+			id: 0,
+			text: 'Learn Redux',
+			completed: true,
+		},
+		{
+			id: 1,
+			text: 'Get rich',
+			completed: false,
+		},
+	];
 
-const store = createStore(counter);
+	const stateAfter = [
+		{
+			id: 0,
+			text: 'Learn Redux',
+			completed: true,
+		},
+		{
+			id: 1,
+			text: 'Get rich',
+			completed: true,
+		},
+	];
 
-const MyRender = () => (
-	<div>
-		<h1>Hello Redux</h1>
-		<h2>Hello Redux</h2>
-		<p>hello Redux</p>
-		<Counter value={store.getState()} />
-	</div>
-);
+	const action = {
+		type: 'TOGGLE_TODO',
+		completed: true,
+		id: 1,
+	};
+	deepFreeze(stateBefore);
+	deepFreeze(action);
 
-store.subscribe(MyRender);
-MyRender();
+	// tets the todos reducer
+	expect(todos(stateBefore, action)).toEqual(stateAfter);
+};
 
-export default MyRender;
+const testAddTodo = () => {
+	const stateBefore = [];
+	const action = {
+		type: 'ADD_TODO',
+		text: 'Learn Redux',
+		id: 0,
+	};
+	const stateAfter = [
+		{
+			completed: false,
+			text: 'Learn Redux',
+			id: 0,
+		},
+	];
+
+	deepFreeze(stateBefore);
+	deepFreeze(action);
+
+	// tets the todos reducer
+	expect(todos(stateBefore, action)).toEqual(stateAfter);
+};
+
+testAddTodo();
+testToggleTodo();
+console.log('All tests passed');
+
+const ToDoList = () => <div />;
+
+export default ToDoList;
