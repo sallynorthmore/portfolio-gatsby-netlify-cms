@@ -31,6 +31,30 @@ const todos = (state = [], action) => {
 	}
 };
 
+const visibilityFilter = (state = 'SHOW_ALL', action) => {
+	switch (action.type) {
+		case 'SET_VISIBILITY_FILTER':
+			return action.filter;
+		default:
+			return state;
+	}
+};
+
+// Composition Pattern
+// This cobmines both the todos and visibilityFilter reducers into ONE piece of state
+const todoApp = (state = {}, action) => {
+	return {
+		todos: todos(state.todos, action),
+		visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+	};
+};
+
+const store = createStore(todoApp);
+
+console.log('Initial state');
+console.log(store.getState);
+console.log('-------------------');
+
 const testToggleTodo = () => {
 	const stateBefore = [
 		{
@@ -95,6 +119,17 @@ const testAddTodo = () => {
 testAddTodo();
 testToggleTodo();
 console.log('All tests passed');
+
+console.log('Dispatching ADD_TODO');
+
+store.dispatch({
+	type: 'ADD_TODO',
+	id: 0,
+	text: 'Learn Redux',
+});
+
+console.log('Current State');
+console.log(store.getState());
 
 const ToDoList = () => <div />;
 
