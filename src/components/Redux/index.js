@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import expect from 'expect';
 import deepFreeze from 'deep-freeze';
 
@@ -42,12 +42,22 @@ const visibilityFilter = (state = 'SHOW_ALL', action) => {
 
 // Composition Pattern
 // This cobmines both the todos and visibilityFilter reducers into ONE piece of state
-const todoApp = (state = {}, action) => {
-	return {
-		todos: todos(state.todos, action),
-		visibilityFilter: visibilityFilter(state.visibilityFilter, action),
-	};
-};
+// const todoApp = (state = {}, action) => {
+// 	return {
+// 		todos: todos(state.todos, action),
+// 		visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+// 	};
+// };
+
+// But actually, you just use combineReducers instead
+const todoApp = combineReducers({
+	todos: todos,
+	visibilityFilter: visibilityFilter,
+	// stateName : reducerName
+	//
+	// Actually with ES6 you can just write this:
+	// todos, visibilityFilter
+});
 
 const store = createStore(todoApp);
 
