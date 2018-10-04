@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 // import PageTransition from 'gatsby-plugin-page-transitions';
+
 import BaseStyles from '../components/BaseStyles';
 import Layout from '../components/Layout';
 import Home from '../components/Home';
 
 BaseStyles();
 
-export default class IndexPage extends React.Component {
+export default class IndexPage extends React.PureComponent {
 	render() {
 		const { data, location } = this.props;
 		const { edges: posts } = data.allMarkdownRemark;
@@ -22,6 +23,7 @@ export default class IndexPage extends React.Component {
 }
 
 IndexPage.propTypes = {
+	location: PropTypes.obj,
 	data: PropTypes.shape({
 		allMarkdownRemark: PropTypes.shape({
 			edges: PropTypes.array,
