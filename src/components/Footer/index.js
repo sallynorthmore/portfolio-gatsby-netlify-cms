@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaArrowDown } from 'react-icons/fa';
 import { FooterComponent, Inner, Anchor } from './styles';
 
 class Footer extends React.Component {
@@ -30,7 +31,9 @@ class Footer extends React.Component {
 			<FooterComponent>
 				{isVisible && (
 					<Inner>
-						<Anchor href={anchor}>⇩</Anchor>
+						<Anchor href={anchor}>
+							<FaArrowDown />
+						</Anchor>
 					</Inner>
 				)}
 			</FooterComponent>
