@@ -1,56 +1,5 @@
 import React from 'react';
-import { createStore, combineReducers } from 'redux';
-
-const todo = (state, action) => {
-	switch (action.type) {
-		case 'ADD_TODO':
-			return {
-				id: action.id,
-				text: action.text,
-				completed: false,
-			};
-		case 'TOGGLE_TODO':
-			if (state.id !== action.id) {
-				return state;
-			}
-
-			return {
-				...state,
-				completed: !state.completed,
-			};
-		default:
-			return state;
-	}
-};
-
-// TODOS reducer
-const todos = (state = [], action) => {
-	switch (action.type) {
-		case 'ADD_TODO':
-			return [...state, todo(undefined, action)];
-		case 'TOGGLE_TODO':
-			return state.map(t => todo(t, action));
-		default:
-			return state;
-	}
-};
-
-// VisibilityFilter reducer
-const visibilityFilter = (state = 'SHOW_ALL', action) => {
-	switch (action.type) {
-		case 'SET_VISIBILITY_FILTER':
-			return action.filter;
-		default:
-			return state;
-	}
-};
-
-const todoApp = combineReducers({
-	todos,
-	visibilityFilter,
-});
-
-const store = createStore(todoApp);
+import PropTypes from 'prop-types';
 
 const Link = ({ active, children, onClick }) => {
 	if (active) {
@@ -71,7 +20,10 @@ const Link = ({ active, children, onClick }) => {
 };
 
 class FilterLink extends React.Component {
+	// Subscribe to updates in the store inside the component
 	componentDidMount() {
+		const { store } = this.context;
+		// Creates a method you can then use in unmount
 		this.unsubscribe = store.subscribe(() => this.forceUpdate());
 	}
 
@@ -81,6 +33,7 @@ class FilterLink extends React.Component {
 
 	render() {
 		const props = this.props;
+		const { store } = this.context;
 		const state = store.getState();
 
 		return (
@@ -98,6 +51,11 @@ class FilterLink extends React.Component {
 		);
 	}
 }
+
+// You have to specify this is receiving context
+FilterLink.contextTypes = {
+	store: PropTypes.object,
+};
 
 const Footer = () => (
 	<p>
@@ -129,7 +87,9 @@ const TodoList = ({ todos, onTodoClick }) => (
 );
 
 let nextTodoId = 0;
-const AddTodo = () => {
+
+// Here, the second argument is the store context
+const AddTodo = (props, { store }) => {
 	let input;
 
 	return (
@@ -156,6 +116,11 @@ const AddTodo = () => {
 	);
 };
 
+// You have to specify this is receiving context
+AddTodo.contextTypes = {
+	store: PropTypes.object,
+};
+
 const getVisibleTodos = (todos, filter) => {
 	switch (filter) {
 		case 'SHOW_ALL':
@@ -171,6 +136,7 @@ const getVisibleTodos = (todos, filter) => {
 
 class VisibleTodoList extends React.Component {
 	componentDidMount() {
+		const { store } = this.context;
 		this.unsubscribe = store.subscribe(() => this.forceUpdate());
 	}
 
@@ -179,7 +145,7 @@ class VisibleTodoList extends React.Component {
 	}
 
 	render() {
-		const props = this.props;
+		const { store } = this.context;
 		const state = store.getState();
 
 		return (
@@ -195,6 +161,11 @@ class VisibleTodoList extends React.Component {
 		);
 	}
 }
+
+// You have to specify this is receiving context
+VisibleTodoList.contextTypes = {
+	store: PropTypes.object,
+};
 
 const TodoApp = () => (
 	<div>
