@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import scrollToComponent from 'react-scroll-to-component';
+import scrollToComponent from 'react-scroll-to-component';
 
 import Grid from '../Grid';
 import Message from '../Message';
@@ -34,12 +34,12 @@ class Home extends React.Component {
 	}
 
 	handleFooterClick = () => {
-		// scrollToComponent(this.Projects, {
-		// 	offset: 0,
-		// 	align: 'top',
-		// 	duration: 600,
-		// 	ease: 'inOutCirc',
-		// });
+		scrollToComponent(this.Projects, {
+			offset: 0,
+			align: 'top',
+			duration: 600,
+			ease: 'inOutCirc',
+		});
 	};
 
 	render() {
