@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+// import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { ProjectLinksComponent, Button } from './styles';
 
 class ProjectLinks extends React.Component {
@@ -32,16 +32,12 @@ class ProjectLinks extends React.Component {
 			<ProjectLinksComponent>
 				{previous && (
 					<Button to={previous.fields.slug}>
-						<abbr title="Previous project">
-							<MdChevronLeft />
-						</abbr>
+						<abbr title="Previous project">{/* <MdChevronLeft /> */}</abbr>
 					</Button>
 				)}
 				{next && (
 					<Button to={next.fields.slug}>
-						<abbr title="Next project">
-							<MdChevronRight />
-						</abbr>
+						<abbr title="Next project">{/* <MdChevronRight />*/}</abbr>
 					</Button>
 				)}
 			</ProjectLinksComponent>
