@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addTodo } from '../actionCreators/';
 
-let nextTodoId = 0;
 // Here, we pass in the dispatch prop from the store
 // And we use 'let', so that we can reassign it with a connect() method
 let AddTodo = ({ dispatch }) => {
@@ -17,11 +17,7 @@ let AddTodo = ({ dispatch }) => {
 			/>
 			<button
 				onClick={() => {
-					dispatch({
-						type: 'ADD_TODO',
-						id: nextTodoId++,
-						text: input.value,
-					});
+					dispatch(addTodo(input.value)); // using the action creator above
 					input.value = '';
 				}}
 			>
