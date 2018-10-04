@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import scrollToComponent from 'react-scroll-to-component';
 
 import Grid from '../Grid';
 import Message from '../Message';
@@ -32,6 +33,15 @@ class Home extends React.Component {
 		}
 	}
 
+	handleFooterClick = () => {
+		scrollToComponent(this.Projects, {
+			offset: 0,
+			align: 'top',
+			duration: 600,
+			ease: 'inOutCirc',
+		});
+	};
+
 	render() {
 		const { projects } = this.props;
 		const { isContact, contactName } = this.state;
@@ -51,14 +61,16 @@ class Home extends React.Component {
 					</span>
 				</Headline>
 
-				<Projects id="projects">
-					<Title>
-						<a href="#projects">Some things I&rsquo;ve built</a>
-					</Title>
+				<Projects
+					ref={section => {
+						this.Projects = section;
+					}}
+				>
+					<Title>Some things I&rsquo;ve built</Title>
 
 					<Grid items={projects} />
 				</Projects>
-				<Footer anchor="#projects" />
+				<Footer handleClick={this.handleFooterClick} />
 			</HomeComponent>
 		);
 	}

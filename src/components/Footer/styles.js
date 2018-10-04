@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FooterComponent = styled.div`
+export const FooterComponent = styled.a`
 	bottom: 0;
 	cursor: pointer;
 	height: 40px;
@@ -16,6 +16,6 @@ export const Inner = styled.div`
 	background: white;
 `;
 
-export const Anchor = styled.a`
+export const Anchor = styled.div`
 	text-decoration: none;
 `;
