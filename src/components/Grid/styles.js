@@ -53,7 +53,7 @@ export const GridLink = styled(Link)`
 	&:hover {
 		cursor: pointer;
 
-		& .Grid-title::before {
+		& h3::before {
 			opacity: 1;
 		}
 	}
