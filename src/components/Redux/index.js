@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const Link = ({ active, children, onClick }) => {
 	if (active) {
@@ -19,43 +20,22 @@ const Link = ({ active, children, onClick }) => {
 	);
 };
 
-class FilterLink extends React.Component {
-	// Subscribe to updates in the store inside the component
-	componentDidMount() {
-		const { store } = this.context;
-		// Creates a method you can then use in unmount
-		this.unsubscribe = store.subscribe(() => this.forceUpdate());
-	}
-
-	componentWillUnmount() {
-		this.unsubscribe();
-	}
-
-	render() {
-		const props = this.props;
-		const { store } = this.context;
-		const state = store.getState();
-
-		return (
-			<Link
-				active={props.filter === state.visibilityFilter}
-				onClick={() =>
-					store.dispatch({
-						type: 'SET_VISIBILITY_FILTER',
-						filter: props.filter,
-					})
-				}
-			>
-				{props.children}
-			</Link>
-		);
-	}
-}
-
-// You have to specify this is receiving context
-FilterLink.contextTypes = {
-	store: PropTypes.object,
+const mapStateToLinkProps = (state, ownProps) => {
+	return {
+		active: ownProps.filter === state.visibilityFilter,
+	};
 };
+const mapDispatchToLinkProps = (dispatch, ownProps) => {
+	return {
+		onClick: () => {
+			dispatch({
+				type: 'SET_VISIBILITY_FILTER',
+				filter: ownProps.filter,
+			});
+		},
+	};
+};
+const FilterLink = connect(mapStateToLinkProps, mapDispatchToLinkProps)(Link);
 
 const Footer = () => (
 	<p>
@@ -88,8 +68,9 @@ const TodoList = ({ todos, onTodoClick }) => (
 
 let nextTodoId = 0;
 
-// Here, the second argument is the store context
-const AddTodo = (props, { store }) => {
+// Here, we pass in the dispatch prop from the store
+// And we use 'let', so that we can reassign it with a connect() method
+let AddTodo = ({ dispatch }) => {
 	let input;
 
 	return (
@@ -102,7 +83,7 @@ const AddTodo = (props, { store }) => {
 			/>
 			<button
 				onClick={() => {
-					store.dispatch({
+					dispatch({
 						type: 'ADD_TODO',
 						id: nextTodoId++,
 						text: input.value,
@@ -116,10 +97,9 @@ const AddTodo = (props, { store }) => {
 	);
 };
 
-// You have to specify this is receiving context
-AddTodo.contextTypes = {
-	store: PropTypes.object,
-};
+// We basically make a container component that only passes in the dispatch method
+// it doesn't subscribe to the store (ie, don't pass in any args to connect())
+AddTodo = connect()(AddTodo);
 
 const getVisibleTodos = (todos, filter) => {
 	switch (filter) {
@@ -134,38 +114,38 @@ const getVisibleTodos = (todos, filter) => {
 	}
 };
 
-class VisibleTodoList extends React.Component {
-	componentDidMount() {
-		const { store } = this.context;
-		this.unsubscribe = store.subscribe(() => this.forceUpdate());
-	}
-
-	componentWillUnmount() {
-		this.unsubscribe();
-	}
-
-	render() {
-		const { store } = this.context;
-		const state = store.getState();
-
-		return (
-			<TodoList
-				todos={getVisibleTodos(state.todos, state.visibilityFilter)}
-				onTodoClick={id =>
-					store.dispatch({
-						type: 'TOGGLE_TODO',
-						id,
-					})
-				}
-			/>
-		);
-	}
-}
-
-// You have to specify this is receiving context
-VisibleTodoList.contextTypes = {
-	store: PropTypes.object,
+//
+// Using Connect
+//
+//
+// mapStateToTodoListProps takes state from the store,
+// and creates the props needed for the presentational component
+// These props update any time the state changes
+const mapStateToTodoListProps = state => {
+	return {
+		todos: getVisibleTodos(state.todos, state.visibilityFilter),
+	};
 };
+
+// mapDispatchToTodoListProps takes the store.dispatch method and creates
+// the callback we can use in the todo click props
+const mapDispatchToTodoListProps = dispatch => {
+	return {
+		onTodoClick: id => {
+			dispatch({
+				type: 'TOGGLE_TODO',
+				id,
+			});
+		},
+	};
+};
+
+// Here we create a container component — VisibleTodoList — using connect, passing in a
+// presentational component we want to connect to the Redux Store (ie, TodoList)
+const VisibleTodoList = connect(
+	mapStateToTodoListProps,
+	mapDispatchToTodoListProps
+)(TodoList);
 
 const TodoApp = () => (
 	<div>

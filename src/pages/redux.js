@@ -1,8 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import TodoApp from '../components/Redux';
 
+//
 const todo = (state, action) => {
 	switch (action.type) {
 		case 'ADD_TODO':
@@ -47,29 +49,11 @@ const visibilityFilter = (state = 'SHOW_ALL', action) => {
 	}
 };
 
+// App Reducer (combo of todos and visibilityFilter)
 const todoApp = combineReducers({
 	todos,
 	visibilityFilter,
 });
-
-// Higher order component, using context, to pass down store
-class Provider extends React.Component {
-	// Create context of 'store' for children and grandchildren
-	getChildContext() {
-		return {
-			store: this.props.store,
-		};
-	}
-
-	render() {
-		return this.props.children;
-	}
-}
-
-// You have to specify childContextTypes, when using context
-Provider.childContextTypes = {
-	store: PropTypes.object,
-};
 
 const ReduxLesson = () => (
 	<Provider store={createStore(todoApp)}>
