@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import scrollToComponent from 'react-scroll-to-component';
+import { Element, scroller } from 'react-scroll';
 
 import Grid from '../Grid';
 import Message from '../Message';
@@ -33,13 +33,12 @@ class Home extends React.Component {
 		}
 	}
 
-	handleFooterClick = () => {
-		// scrollToComponent(this.Projects, {
-		// 	offset: 0,
-		// 	align: 'top',
-		// 	duration: 600,
-		// 	ease: 'inOutCirc',
-		// });
+	scrollTo = () => {
+		scroller.scrollTo('scroll-to-element', {
+			duration: 800,
+			delay: 0,
+			smooth: 'easeInOutQuart',
+		});
 	};
 
 	render() {
@@ -61,16 +60,19 @@ class Home extends React.Component {
 					</span>
 				</Headline>
 
-				<Projects
-					ref={section => {
-						this.Projects = section;
-					}}
-				>
-					<Title>Some things I&rsquo;ve built</Title>
+				<Element name="scroll-to-element">
+					<Projects
+						ref={section => {
+							this.Projects = section;
+						}}
+					>
+						<Title>Some things I&rsquo;ve built</Title>
 
-					<Grid items={projects} />
-				</Projects>
-				<Footer handleClick={this.handleFooterClick} />
+						<Grid items={projects} />
+					</Projects>
+				</Element>
+
+				<Footer to="scroll-to-element" handleClick={this.scrollTo} />
 			</HomeComponent>
 		);
 	}

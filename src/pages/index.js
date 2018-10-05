@@ -23,7 +23,7 @@ export default class IndexPage extends React.PureComponent {
 }
 
 IndexPage.propTypes = {
-	location: PropTypes.obj,
+	location: PropTypes.object,
 	data: PropTypes.shape({
 		allMarkdownRemark: PropTypes.shape({
 			edges: PropTypes.array,
