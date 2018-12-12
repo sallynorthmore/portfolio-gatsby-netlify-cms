@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Spring, animated } from 'react-spring';
 import AnimatedText from '../AnimatedText';
 import Grid from '../Grid';
 import Message from '../Message';
-import Footer from '../Footer';
-import { HomeComponent, Headline, Title, Projects } from './styles';
+// import Footer from '../Footer';
+import { FaArrowDown } from 'react-icons/fa';
+import { HomeComponent, Headline, Title, Projects, DownArrow } from './styles';
 
 import {} from './styles';
 
@@ -12,6 +14,7 @@ class Home extends Component {
 	state = {
 		isContact: false,
 		contactName: '',
+		isScrolled: false,
 	};
 
 	componentDidMount = () => {
@@ -21,6 +24,7 @@ class Home extends Component {
 				contactName: this.props.contactState.contactName,
 			});
 		}
+		window.addEventListener('scroll', this.onScroll);
 	};
 
 	componentWillUnmount() {
@@ -30,14 +34,26 @@ class Home extends Component {
 				contactName: '',
 			});
 		}
+		window.removeEventListener('scroll', this.onScroll);
 	}
 
-	scrollTo = () => {
-		// scroller.scrollTo('scroll-to-element', {
-		// 	duration: 800,
-		// 	delay: 0,
-		// 	smooth: 'easeInOutQuart',
-		// });
+	scheduledAnimationFrame = null;
+
+	onScroll = () => {
+		// Prevent multiple rAF callbacks.
+		if (this.scheduledAnimationFrame) {
+			return;
+		}
+		this.scheduledAnimationFrame = true;
+		requestAnimationFrame(this.manageDownButton);
+	};
+
+	manageDownButton = () => {
+		const y = window.scrollY;
+		if (y > 200 && !this.state.isScrolled) {
+			this.setState(() => ({ isScrolled: true }));
+		}
+		this.scheduledAnimationFrame = false;
 	};
 
 	createString = string => {
@@ -46,7 +62,7 @@ class Home extends Component {
 
 	render() {
 		const { projects } = this.props;
-		const { isContact, contactName } = this.state;
+		const { isContact, contactName, isScrolled } = this.state;
 
 		const messageText = isContact
 			? `Thanks for your message, ${contactName}`
@@ -63,6 +79,20 @@ class Home extends Component {
 					<AnimatedText text={textArray} />
 				</Headline>
 
+				{!isScrolled && (
+					<Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
+						{props => (
+							<animated.div style={props}>
+								<DownArrow isAnimated={!isScrolled}>
+									<div>
+										<FaArrowDown />
+									</div>
+								</DownArrow>
+							</animated.div>
+						)}
+					</Spring>
+				)}
+
 				<div name="scroll-to-element">
 					<Projects
 						ref={section => {
@@ -74,8 +104,6 @@ class Home extends Component {
 						<Grid items={projects} />
 					</Projects>
 				</div>
-
-				<Footer to="scroll-to-element" handleClick={this.scrollTo} />
 			</HomeComponent>
 		);
 	}

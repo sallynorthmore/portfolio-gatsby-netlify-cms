@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 // import { Link } from 'gatsby';
 
 export const HomeComponent = styled.div`
@@ -22,6 +22,48 @@ export const Title = styled.h2`
 
 	& a {
 		text-decoration: none;
+	}
+`;
+
+const arrowBounce = keyframes`
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-12px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+`;
+
+export const DownArrow = styled.div`
+	display: flex;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	height: 200px;
+	text-align: center;
+
+	& > div {
+		animation-direction: alternate;
+		animation-duration: 1000ms;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease-in-out;
+		margin: auto;
+		position: relative;
+
+		/* Animate */
+		${props =>
+			props.isAnimated
+				? `
+			animation-name: ${arrowBounce};
+			`
+				: null};
+	}
+
+	& svg {
 	}
 `;
 
