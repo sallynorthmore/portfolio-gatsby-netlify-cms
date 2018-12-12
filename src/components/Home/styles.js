@@ -9,17 +9,6 @@ export const Headline = styled.h1`
 	height: 100vh;
 	display: flex;
 	justify-content: center;
-
-	& span {
-		color: rgb(225, 72, 61);
-		font-family: 'adobe-garamond-pro';
-		font-size: 6.25vw;
-		font-weight: 600;
-		letter-spacing: -0.01em;
-		line-height: 1.3em;
-		margin: auto;
-		max-width: 86vw;
-	}
 `;
 
 export const Title = styled.h2`
