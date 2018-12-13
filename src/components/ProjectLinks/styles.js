@@ -23,6 +23,7 @@ export const Button = styled(Link)`
 	}
 
 	& abbr {
+		font-size: 2rem;
 		text-decoration: none;
 	}
 `;

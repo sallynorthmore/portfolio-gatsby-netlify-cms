@@ -19,5 +19,6 @@ export const Inner = styled.div`
 		font-weight: 600;
 		letter-spacing: -0.01em;
 		line-height: 1.3em;
+		min-height: 200px;
 	}
 `;

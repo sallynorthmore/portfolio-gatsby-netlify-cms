@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Spring, animated } from 'react-spring';
+import { Spring, animated, config } from 'react-spring';
+import Banner from '../Banner';
 import AnimatedText from '../AnimatedText';
 import Grid from '../Grid';
 import Message from '../Message';
-// import Footer from '../Footer';
 import { FaArrowDown } from 'react-icons/fa';
 import {
 	HomeComponent,
-	Headline,
+	Header,
+	Intro,
 	DownArrow,
 	Nav,
 	Title,
@@ -46,7 +47,6 @@ class Home extends Component {
 	}
 
 	scheduledAnimationFrame = null;
-	// projectsEl = null;
 
 	onScroll = () => {
 		// Prevent multiple rAF callbacks.
@@ -88,22 +88,50 @@ class Home extends Component {
 			'I’m a freelance frontend web developer. I live and work in London.';
 		return (
 			<HomeComponent>
+				<Header>
+					{isTextDone && (
+						<Spring
+							native
+							config={{ delay: 500 }}
+							from={{ transform: 'translateY(-200px)' }}
+							to={{ transform: 'translateY(0)' }}
+						>
+							{props => (
+								<animated.div style={props}>
+									<Banner />
+								</animated.div>
+							)}
+						</Spring>
+					)}
+				</Header>
+
 				{messageText && <Message message={messageText} />}
-				<Headline>
+				<Intro>
 					<div>
 						<AnimatedText text={textArray} onFinish={this.handleTextLoaded} />
 					</div>
 
 					{isTextDone && (
 						<Nav onClick={this.scrollToProjects} isScrolled={isScrolled}>
-							<DownArrow isAnimated={!isScrolled}>
-								<div>
-									<FaArrowDown />
-								</div>
-							</DownArrow>
+							<Spring
+								native
+								config={{ delay: 500 }}
+								from={{ transform: 'translateY(200px)' }}
+								to={{ transform: 'translateY(0)' }}
+							>
+								{props => (
+									<animated.div style={props}>
+										<DownArrow isAnimated={!isScrolled}>
+											<div>
+												<FaArrowDown />
+											</div>
+										</DownArrow>
+									</animated.div>
+								)}
+							</Spring>
 						</Nav>
 					)}
-				</Headline>
+				</Intro>
 
 				<Projects>
 					<Title>Some things I&rsquo;ve built</Title>

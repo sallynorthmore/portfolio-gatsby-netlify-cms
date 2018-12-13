@@ -4,22 +4,20 @@ export const HomeComponent = styled.div`
 	text-align: center;
 `;
 
-const fadeIn = keyframes`
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
+export const Header = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+
+	& > div {
+		position: relative;
 	}
 `;
 
-export const Headline = styled.h1`
+export const Intro = styled.h1`
 	scroll-snap-align: start;
-	animation-delay: 500ms;
-	animation-duration: 1000ms;
-	animation-name: ${fadeIn};
-	animation-fill-mode: forwards;
-	opacity: 0;
 	display: flex;
 	height: 100vh;
 	justify-content: center;
@@ -32,12 +30,7 @@ export const Headline = styled.h1`
 `;
 
 export const Nav = styled.div`
-	animation-delay: 2000ms;
-	animation-duration: 1000ms;
-	animation-name: ${fadeIn};
-	animation-fill-mode: forwards;
 	cursor: pointer;
-	opacity: 0;
 	left: 0;
 	width: 100%;
 	position: absolute;
@@ -70,6 +63,7 @@ const arrowBounce = keyframes`
 export const DownArrow = styled.div`
 	display: flex;
 	text-align: center;
+	font-size: 1rem;
 
 	& > div {
 		animation-direction: alternate;
