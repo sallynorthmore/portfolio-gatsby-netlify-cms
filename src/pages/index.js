@@ -48,6 +48,7 @@ export const pageQuery = graphql`
 						title
 						templateKey
 						date(formatString: "YYYY")
+						thumbnail
 					}
 				}
 			}

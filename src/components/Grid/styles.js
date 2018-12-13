@@ -45,6 +45,8 @@ export const Item = styled.div`
 `;
 
 export const GridLink = styled(Link)`
+	background: #111;
+	opacity: 0;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -52,12 +54,15 @@ export const GridLink = styled(Link)`
 	padding: 1.5rem;
 	position: absolute;
 	text-decoration: none;
+	transition: 195ms opacity ease-out;
 	width: 100%;
 	top: 0;
 	left: 0;
+	z-index: 2;
 
 	&:hover {
 		cursor: pointer;
+		opacity: 1;
 
 		& h3::before {
 			opacity: 1;
@@ -66,7 +71,7 @@ export const GridLink = styled(Link)`
 `;
 
 export const Title = styled.h3`
-	color: rgb(76, 76, 76);
+	color: white;
 	font-size: 13px;
 	font-weight: 900;
 	letter-spacing: 0.1em;
@@ -91,4 +96,23 @@ export const Subtitle = styled.div`
 	font-weight: 400;
 	letter-spacing: 0.04em;
 	line-height: 18px;
+`;
+
+export const Thumbnail = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+
+	${props =>
+		props.image
+			? `
+		background-image: url(${props.image});
+		background-size: 500%;
+		background-position: center;
+
+		`
+			: null};
 `;
