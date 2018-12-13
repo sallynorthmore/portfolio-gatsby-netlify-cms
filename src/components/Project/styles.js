@@ -10,7 +10,8 @@ export const Header = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	height: 90vh;
+	margin-top: 20vh;
+	height: 50vh;
 	justify-content: center;
 	text-align: center;
 `;
@@ -37,6 +38,8 @@ export const Client = styled.span`
 	display: block;
 	color: grey;
 	font-size: 0.75rem;
+	max-width: 80%;
+	margin: 0 auto;
 
 	@media (min-width: 720px) {
 		display: inline;
