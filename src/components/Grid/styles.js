@@ -8,19 +8,11 @@ export const GridComponent = styled.div`
 `;
 
 export const Item = styled.div`
-	background: rgb(245, 245, 245);
-	border: 2px solid white;
+	background: black;
 	display: block;
-	flex: 0 0 50%;
+	flex: 0 0 100%;
 	position: relative;
 	margin-top: 2rem;
-
-	&:before {
-		display: block;
-		content: '';
-		width: 100%;
-		padding-top: 100%;
-	}
 
 	&:before {
 		display: block;
@@ -38,18 +30,6 @@ export const Item = styled.div`
 	@media (min-width: 720px) {
 		border: 5px solid white;
 		flex: 0 0 25%;
-
-		&:nth-child(4n + 1),
-		&:nth-child(4n) {
-			background: rgb(245, 245, 245);
-		}
-
-		&:nth-child(8n + 2),
-		&:nth-child(8n + 4),
-		&:nth-child(8n + 5),
-		&:nth-child(8n + 7) {
-			background: #f2ede7;
-		}
 	}
 `;
 
@@ -58,15 +38,17 @@ export const GridLink = styled(Link)`
 	flex-direction: column;
 	height: 100%;
 	justify-content: center;
-	padding: 1.5rem;
+	left: 0;
+	opacity: 0;
+	padding: 1.25rem;
 	position: absolute;
 	text-decoration: none;
+	top: 0;
 	transition: 195ms opacity ease-out;
 	width: 100%;
-	top: 0;
-	left: 0;
 
 	&:hover {
+		background: black;
 		cursor: pointer;
 		opacity: 1;
 
