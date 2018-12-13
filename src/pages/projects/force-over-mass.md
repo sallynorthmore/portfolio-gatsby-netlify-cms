@@ -4,7 +4,7 @@ title: Force Over Mass
 date: 2015-10-19T14:05:00.000Z
 client: Ideas Made Digital Ltd for Force Over Mass Capital
 description: Contributed to Front end build and styling of CraftPHP project
-thumbnail: './img/thumbnails/fom.jpg'
+thumbnail: './img/thumbnails/fom_thumb.jpg'
 tags:
   - JavaScript
   - CSS
