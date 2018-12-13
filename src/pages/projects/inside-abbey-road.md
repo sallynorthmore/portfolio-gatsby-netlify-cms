@@ -6,7 +6,7 @@ description: >-
   An interactive experience exploring Londons famous Abbey Road recording
   studios. I contributed to the build and styling of a component library,
   including animations.
-thumbnail: './img/google.png'
+thumbnail: './img/thumbnails/google.jpg'
 tags:
   - JavaScript
   - CSS

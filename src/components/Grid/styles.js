@@ -110,7 +110,7 @@ export const Thumbnail = styled.div`
 		props.image
 			? `
 		background-image: url(${props.image});
-		background-size: 500%;
+		background-size: cover;
 		background-position: center;
 
 		`

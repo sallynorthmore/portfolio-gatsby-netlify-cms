@@ -4,7 +4,7 @@ title: SHOWstudio
 date: 2014-07-20T14:12:00.000Z
 client: SHOWstudio and Various
 description: Frontend developer for fashion photographer Nick Knights online platform for fashion film, art and ecommerce from 2009 to 2014.
-thumbnail: './img/showstudio.jpg'
+thumbnail: './img/thumbnails/showstudio.jpg'
 tags:
   - JavaScript
   - CSS
