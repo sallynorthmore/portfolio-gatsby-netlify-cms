@@ -6,7 +6,7 @@ import { Trail, animated, config } from 'react-spring';
 
 class AnimatedText extends Component {
 	state = {
-		typedText: '',
+		isFinished: false,
 	};
 
 	componentWillMount = () => {
@@ -14,7 +14,11 @@ class AnimatedText extends Component {
 	};
 
 	componentDidMount = () => {
-		this.typeWriter();
+		if (this.typedEl === null) {
+			setTimeout(this.typeWriter, 300);
+		} else {
+			this.typeWriter();
+		}
 	};
 
 	i = 0;
@@ -22,10 +26,6 @@ class AnimatedText extends Component {
 	speed = 100;
 
 	typeWriter = () => {
-		if (this.typedEl === null) {
-			setTimeout(this.typeWriter, 300);
-			return;
-		}
 		if (this.i < this.txt.length) {
 			if (this.txt.charAt(this.i) === '.') {
 				this.typedEl.innerHTML += this.txt.charAt(this.i);
@@ -36,13 +36,19 @@ class AnimatedText extends Component {
 				this.i++;
 				setTimeout(this.typeWriter, this.speed);
 			}
+
+			if (this.i === this.txt.length - 1) {
+				this.setState({
+					isFinished: true,
+				});
+			}
 		}
 	};
 
 	render() {
-		const { typedText } = this.state;
+		const { isFinished, typedText } = this.state;
 		return (
-			<Inner>
+			<Inner isFinished={isFinished}>
 				<div
 					ref={el => {
 						this.typedEl = el;
