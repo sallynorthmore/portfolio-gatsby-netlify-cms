@@ -6,6 +6,7 @@ description: >-
   An interactive experience exploring Londons famous Abbey Road recording
   studios. I contributed to the build and styling of a component library,
   including animations.
+thumbnail: './img/thumbnails/google.jpg'
 tags:
   - JavaScript
   - CSS
@@ -15,6 +16,7 @@ tags:
   - Stylus
   - PostCSS
 ---
+
 ![](/img/google.png)
 
 I helped build and style the a component library of UI elements, including CSS and JavaScript animations.
