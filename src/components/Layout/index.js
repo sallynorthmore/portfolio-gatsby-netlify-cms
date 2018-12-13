@@ -4,14 +4,10 @@ import Helmet from 'react-helmet';
 import Banner from '../Banner';
 import { LayoutComponent } from './styles';
 
-// import Social from '../components/Social';
-// import '../all.sass';
-
 const TemplateWrapper = ({ children }) => (
 	<LayoutComponent>
 		<Helmet title="Sally Northmore" />
 		<Banner />
-		{/*  <Social /> */}
 		<div>{children}</div>
 	</LayoutComponent>
 );

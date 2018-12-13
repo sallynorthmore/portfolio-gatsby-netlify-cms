@@ -4,6 +4,7 @@ title: The New British (1st Edition)
 date: 2014-09-31T23:00:00.000Z
 client: The New British
 description: A responsive, one page site to showcase The New British first iPad App release.
+thumbnail: './img/thumbnails/newbritish.jpg'
 tags:
   - JavaScript
   - CSS
