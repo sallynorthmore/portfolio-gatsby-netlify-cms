@@ -8,13 +8,18 @@ export const GridComponent = styled.div`
 `;
 
 export const Item = styled.div`
-	align-items: center;
 	background: rgb(245, 245, 245);
 	border: 2px solid white;
-	display: flex;
-	height: 40vw;
-	justify-content: center;
-	width: 50%;
+	display: block;
+	flex: 0 0 50%;
+	position: relative;
+
+	&:before {
+		display: block;
+		content: '';
+		width: 100%;
+		padding-top: 100%;
+	}
 
 	&:nth-child(4n + 1),
 	&:nth-child(4n) {
@@ -23,8 +28,7 @@ export const Item = styled.div`
 
 	@media (min-width: 720px) {
 		border: 5px solid white;
-		height: 250px;
-		width: 25%;
+		flex: 0 0 25%;
 
 		&:nth-child(4n + 1),
 		&:nth-child(4n) {
@@ -41,14 +45,16 @@ export const Item = styled.div`
 `;
 
 export const GridLink = styled(Link)`
-	display: block;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	justify-content: center;
-	padding: 2em;
+	padding: 1.5rem;
+	position: absolute;
 	text-decoration: none;
 	width: 100%;
+	top: 0;
+	left: 0;
 
 	&:hover {
 		cursor: pointer;
