@@ -79,10 +79,8 @@ class Home extends Component {
 		const messageText = isContact
 			? `Thanks for your message, ${contactName}`
 			: null;
-		const textArray = this.createString(
-			'I’m a freelance frontend web developer. I live and work in London.'
-		);
-
+		const textArray =
+			'I’m a freelance frontend web developer. I live and work in London.';
 		return (
 			<HomeComponent>
 				{messageText && <Message message={messageText} />}
