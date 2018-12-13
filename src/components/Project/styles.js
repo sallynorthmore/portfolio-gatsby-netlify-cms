@@ -10,16 +10,26 @@ export const Header = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	height: 90vh;
+	margin-top: 20vh;
+	height: 50vh;
 	justify-content: center;
 	text-align: center;
 `;
 
 export const Title = styled.h1`
-	font-size: 14px;
+	font-size: 1.25rem;
 	font-weight: 900;
-	letter-spacing: 0.1em;
+	letter-spacing: 0.1rem;
 	line-height: 1.3;
+	text-decoration: none;
+	text-transform: uppercase;
+`;
+
+export const Subtitle = styled.h2`
+	font-size: 1rem;
+	font-weight: 900;
+	letter-spacing: 0.1rem;
+	line-height: 1.25rem;
 	text-decoration: none;
 	text-transform: uppercase;
 `;
@@ -27,11 +37,13 @@ export const Title = styled.h1`
 export const Client = styled.span`
 	display: block;
 	color: grey;
-	font-size: 13px;
+	font-size: 0.75rem;
+	max-width: 80%;
+	margin: 0 auto;
 
 	@media (min-width: 720px) {
 		display: inline;
-		font-size: 14px;
+		font-size: 1rem;
 		color: rgb(20, 20, 20);
 
 		&::before {
@@ -53,7 +65,7 @@ export const Description = styled.p`
 `;
 
 export const Body = styled.div`
-	color: rgb(187, 187, 187);
+	color: #666;
 	font-size: 12px;
 	font-weight: 400;
 	letter-spacing: 0.04em;
@@ -78,7 +90,7 @@ export const Tags = styled.ul`
 `;
 
 export const TagItem = styled.li`
-	color: rgb(187, 187, 187);
+	color: #666;
 	display: inline-block;
 
 	&:not(:last-child) {
@@ -93,7 +105,7 @@ export const TagItem = styled.li`
 `;
 
 export const TagLink = styled.span`
-	color: rgb(187, 187, 187);
+	color: color: #666;
 	font-size: 12px;
 	font-weight: 400;
 	letter-spacing: 0.04em;
@@ -102,7 +114,7 @@ export const TagLink = styled.span`
 `;
 
 export const Date = styled.div`
-	color: rgb(187, 187, 187);
+	color: color: #666;
 	font-size: 12px;
 	font-weight: 400;
 	letter-spacing: 0.04em;

@@ -7,7 +7,7 @@ export const ContactFormComponent = styled.div`
 	& form {
 		display: block;
 		margin: 0 auto;
-		max-width: 420px;
+		/* max-width: 420px; */
 		width: 100%;
 		text-align: left;
 	}
@@ -44,12 +44,16 @@ export const Label = styled.label`
 export const Title = styled.h2`
 	color: rgb(20, 20, 20);
 	font-family: 'adobe-garamond-pro';
-	font-size: 25px;
+	font-size: 1.25rem;
 	font-weight: 600;
 	letter-spacing: -0.01em;
 	line-height: 1.3;
-	margin: 6vw auto 0;
-	max-width: 400px;
+	margin: 6rem auto 0;
+	/* max-width: 400px; */
+
+	@media (min-width: 720px) {
+		font-size: 1.8rem;
+	}
 `;
 
 export const Button = styled.button`
