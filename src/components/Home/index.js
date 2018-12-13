@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Spring, animated, config } from 'react-spring';
+import { Spring, animated } from 'react-spring';
 import Banner from '../Banner';
 import AnimatedText from '../AnimatedText';
 import Grid from '../Grid';
