@@ -22,13 +22,20 @@ class AnimatedText extends Component {
 	speed = 100;
 
 	typeWriter = () => {
-		if (!this.typedEl) {
+		if (this.typedEl === null) {
 			setTimeout(this.typeWriter, 300);
+			return;
 		}
 		if (this.i < this.txt.length) {
-			this.typedEl.innerHTML += this.txt.charAt(this.i);
-			this.i++;
-			setTimeout(this.typeWriter, this.speed);
+			if (this.txt.charAt(this.i) === '.') {
+				this.typedEl.innerHTML += this.txt.charAt(this.i);
+				this.i++;
+				setTimeout(this.typeWriter, this.speed * 10);
+			} else {
+				this.typedEl.innerHTML += this.txt.charAt(this.i);
+				this.i++;
+				setTimeout(this.typeWriter, this.speed);
+			}
 		}
 	};
 
