@@ -4,7 +4,7 @@ title: Kimberley Harding
 date: 2014-12-20T15:03:00.000Z
 client: Kimberley Harding
 description: Frontend Development of a portfolio site for set designer Kim Harding.
-thumbnail: './img/thumbnails/harding.jpg'
+thumbnail: './img/thumbnails/harding_thumb.jpg'
 tags:
   - JavaScript
   - CSS

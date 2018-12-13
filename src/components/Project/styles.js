@@ -6,6 +6,14 @@ export const ProjectComponent = styled.div`
 	text-align: center;
 `;
 
+export const ProjectBanner = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+`;
+
 export const Header = styled.div`
 	align-items: center;
 	display: flex;
@@ -26,7 +34,7 @@ export const Title = styled.h1`
 `;
 
 export const Subtitle = styled.h2`
-	font-size: 1rem;
+	font-size: 0.81rem;
 	font-weight: 900;
 	letter-spacing: 0.1rem;
 	line-height: 1.25rem;
@@ -38,18 +46,15 @@ export const Client = styled.span`
 	display: block;
 	color: grey;
 	font-size: 0.75rem;
+	line-height: 1.5rem;
 	max-width: 80%;
 	margin: 0 auto;
 
 	@media (min-width: 720px) {
-		display: inline;
-		font-size: 1rem;
-		color: rgb(20, 20, 20);
+		/* display: inline; */
 
-		&::before {
-			content: ' | ';
-			display: inline;
-		}
+		color: rgb(20, 20, 20);
+		max-width: none;
 	}
 `;
 
@@ -66,7 +71,8 @@ export const Description = styled.p`
 
 export const Body = styled.div`
 	color: #666;
-	font-size: 12px;
+	font-size: 1rem;
+
 	font-weight: 400;
 	letter-spacing: 0.04em;
 	line-height: 18px;
@@ -76,7 +82,8 @@ export const Body = styled.div`
 
 	& p {
 		color: inherit;
-		margin-top: 6vw;
+		font-family: 'adobe-garamond-pro';
+		margin-top: 3rem;
 	}
 
 	& img {
@@ -106,16 +113,16 @@ export const TagItem = styled.li`
 
 export const TagLink = styled.span`
 	color: color: #666;
-	font-size: 12px;
+	font-size: .8rem;
 	font-weight: 400;
 	letter-spacing: 0.04em;
-	line-height: 18px;
+	line-height: 1.25rem;
 	text-decoration: none;
 `;
 
 export const Date = styled.div`
 	color: color: #666;
-	font-size: 12px;
+	font-size: .8rem;
 	font-weight: 400;
 	letter-spacing: 0.04em;
 	line-height: 18px;

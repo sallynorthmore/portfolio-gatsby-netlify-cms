@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import PageTransition from 'gatsby-plugin-page-transitions';
+import Banner from '../Banner';
 import Helmet from 'react-helmet';
 import Content from '../Content';
-import Footer from '../Footer';
 import ProjectLinks from '../ProjectLinks';
 import {
 	ProjectComponent,
@@ -18,6 +17,7 @@ import {
 	TagLink,
 	Title,
 	Subtitle,
+	ProjectBanner,
 } from './styles';
 
 export const Project = ({
@@ -36,6 +36,9 @@ export const Project = ({
 	return (
 		<ProjectComponent>
 			<Helmet title={`Project: ${title}`} />
+			<ProjectBanner>
+				<Banner />
+			</ProjectBanner>
 
 			<Header>
 				<Title>
