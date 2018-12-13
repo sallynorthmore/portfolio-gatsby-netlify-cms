@@ -6,7 +6,14 @@ import Grid from '../Grid';
 import Message from '../Message';
 // import Footer from '../Footer';
 import { FaArrowDown } from 'react-icons/fa';
-import { HomeComponent, Headline, Title, Projects, DownArrow } from './styles';
+import {
+	HomeComponent,
+	Headline,
+	DownArrow,
+	Nav,
+	Title,
+	Projects,
+} from './styles';
 
 import {} from './styles';
 
@@ -38,6 +45,7 @@ class Home extends Component {
 	}
 
 	scheduledAnimationFrame = null;
+	// projectsEl = null;
 
 	onScroll = () => {
 		// Prevent multiple rAF callbacks.
@@ -60,6 +68,10 @@ class Home extends Component {
 		return string.split('');
 	};
 
+	scrollToProjects = () => {
+		window.scrollTo(0, window.innerHeight);
+	};
+
 	render() {
 		const { projects } = this.props;
 		const { isContact, contactName, isScrolled } = this.state;
@@ -74,36 +86,26 @@ class Home extends Component {
 		return (
 			<HomeComponent>
 				{messageText && <Message message={messageText} />}
-
 				<Headline>
-					<AnimatedText text={textArray} />
+					<div>
+						<AnimatedText text={textArray} />
+					</div>
 				</Headline>
 
 				{!isScrolled && (
-					<Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
-						{props => (
-							<animated.div style={props}>
-								<DownArrow isAnimated={!isScrolled}>
-									<div>
-										<FaArrowDown />
-									</div>
-								</DownArrow>
-							</animated.div>
-						)}
-					</Spring>
+					<Nav onClick={this.scrollToProjects}>
+						<DownArrow isAnimated={!isScrolled}>
+							<div>
+								<FaArrowDown />
+							</div>
+						</DownArrow>
+					</Nav>
 				)}
 
-				<div name="scroll-to-element">
-					<Projects
-						ref={section => {
-							this.Projects = section;
-						}}
-					>
-						<Title>Some things I&rsquo;ve built</Title>
-
-						<Grid items={projects} />
-					</Projects>
-				</div>
+				<Projects>
+					<Title>Some things I&rsquo;ve built</Title>
+					<Grid items={projects} />
+				</Projects>
 			</HomeComponent>
 		);
 	}

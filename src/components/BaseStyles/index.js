@@ -25,6 +25,11 @@ export default function BaseStyles() {
 		a {
 			color: inherit;
 		}
+
+		html {
+			scroll-behavior: smooth
+		}
+
 		/* stylelint-enable */
 	`;
 }

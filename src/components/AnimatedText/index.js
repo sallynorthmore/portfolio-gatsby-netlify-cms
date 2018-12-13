@@ -10,17 +10,17 @@ function AnimatedText({ text }) {
 			<div>
 				<Trail
 					native
-					config={(config.stiff, { delay: 1000 })}
+					config={{ delay: 500 }}
 					keys={() => randomize('Aa', 200)}
 					items={text}
-					from={{ opacity: 0 }}
-					to={{ opacity: 1 }}
+					from={{ color: 'black' }}
+					to={{ color: 'rgb(225, 72, 61)' }}
 				>
-					{item => ({ opacity }) => (
+					{item => ({ color }) => (
 						<animated.span
 							key={randomize('Aa', 100)}
 							style={{
-								opacity,
+								color,
 							}}
 						>
 							{item}
