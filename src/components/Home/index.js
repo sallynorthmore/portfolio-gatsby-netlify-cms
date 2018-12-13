@@ -22,6 +22,7 @@ class Home extends Component {
 		isContact: false,
 		contactName: '',
 		isScrolled: false,
+		isTextDone: false,
 	};
 
 	componentDidMount = () => {
@@ -72,9 +73,13 @@ class Home extends Component {
 		window.scrollTo(0, window.innerHeight);
 	};
 
+	handleTextLoaded = () => {
+		this.setState(() => ({ isTextDone: true }));
+	};
+
 	render() {
 		const { projects } = this.props;
-		const { isContact, contactName, isScrolled } = this.state;
+		const { isContact, contactName, isScrolled, isTextDone } = this.state;
 
 		const messageText = isContact
 			? `Thanks for your message, ${contactName}`
@@ -86,12 +91,12 @@ class Home extends Component {
 				{messageText && <Message message={messageText} />}
 				<Headline>
 					<div>
-						<AnimatedText text={textArray} />
+						<AnimatedText text={textArray} onFinish={this.handleTextLoaded} />
 					</div>
 				</Headline>
 
-				{!isScrolled && (
-					<Nav onClick={this.scrollToProjects}>
+				{isTextDone && (
+					<Nav onClick={this.scrollToProjects} isScrolled={isScrolled}>
 						<DownArrow isAnimated={!isScrolled}>
 							<div>
 								<FaArrowDown />

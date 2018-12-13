@@ -43,6 +43,14 @@ export const Nav = styled.div`
 	position: fixed;
 	bottom: 0;
 	height: 10vh;
+
+	/* Animate */
+	${props =>
+		props.isScrolled
+			? `
+		display: none;
+		`
+			: null};
 `;
 
 const arrowBounce = keyframes`

@@ -35,6 +35,7 @@ class AnimatedText extends Component {
 				this.setState({
 					isFinished: true,
 				});
+				this.props.onFinish();
 			}
 		}
 	};
@@ -58,6 +59,7 @@ class AnimatedText extends Component {
 
 AnimatedText.propTypes = {
 	text: PropTypes.array,
+	onFinish: PropTypes.func,
 };
 
 AnimatedText.defaultProps = {};
