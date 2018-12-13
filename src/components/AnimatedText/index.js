@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Inner } from './styles.js';
-import randomize from 'randomatic';
-import { Trail, animated, config } from 'react-spring';
 
 class AnimatedText extends Component {
 	state = {
@@ -14,11 +12,7 @@ class AnimatedText extends Component {
 	};
 
 	componentDidMount = () => {
-		if (this.typedEl === null) {
-			setTimeout(this.typeWriter, 300);
-		} else {
-			this.typeWriter();
-		}
+		setTimeout(this.typeWriter, 800);
 	};
 
 	i = 0;
@@ -37,7 +31,7 @@ class AnimatedText extends Component {
 				setTimeout(this.typeWriter, this.speed);
 			}
 
-			if (this.i === this.txt.length - 1) {
+			if (this.i === this.txt.length) {
 				this.setState({
 					isFinished: true,
 				});
@@ -56,27 +50,6 @@ class AnimatedText extends Component {
 				>
 					{' '}
 					{typedText}
-					{/*
-					<Trail
-						native
-						config={{ delay: 500 }}
-						keys={() => randomize('Aa', 200)}
-						items={text}
-						from={{ color: 'black' }}
-						to={{ color: 'rgb(225, 72, 61)' }}
-					>
-						{item => ({ color }) => (
-							<animated.span
-								key={randomize('Aa', 100)}
-								style={{
-									color,
-								}}
-							>
-								{item}
-							</animated.span>
-						)}
-					</Trail>
-					*/}
 				</div>
 			</Inner>
 		);
