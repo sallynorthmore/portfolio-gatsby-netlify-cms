@@ -93,17 +93,17 @@ class Home extends Component {
 					<div>
 						<AnimatedText text={textArray} onFinish={this.handleTextLoaded} />
 					</div>
-				</Headline>
 
-				{isTextDone && (
-					<Nav onClick={this.scrollToProjects} isScrolled={isScrolled}>
-						<DownArrow isAnimated={!isScrolled}>
-							<div>
-								<FaArrowDown />
-							</div>
-						</DownArrow>
-					</Nav>
-				)}
+					{isTextDone && (
+						<Nav onClick={this.scrollToProjects} isScrolled={isScrolled}>
+							<DownArrow isAnimated={!isScrolled}>
+								<div>
+									<FaArrowDown />
+								</div>
+							</DownArrow>
+						</Nav>
+					)}
+				</Headline>
 
 				<Projects>
 					<Title>Some things I&rsquo;ve built</Title>

@@ -24,7 +24,7 @@ export const Headline = styled.h1`
 	height: 100vh;
 	justify-content: center;
 
-	& > div {
+	& > div:first-child {
 		margin: auto;
 		top: -3rem;
 		position: relative;
@@ -40,7 +40,9 @@ export const Nav = styled.div`
 	opacity: 0;
 	left: 0;
 	width: 100%;
-	position: fixed;
+	position: absolute;
+	transform-origin: center;
+	transition: 500ms transform ease-out;
 	bottom: 0;
 	height: 10vh;
 
@@ -48,7 +50,7 @@ export const Nav = styled.div`
 	${props =>
 		props.isScrolled
 			? `
-		display: none;
+		transform: scale(0);
 		`
 			: null};
 `;

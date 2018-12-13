@@ -8,7 +8,7 @@ export const GridComponent = styled.div`
 `;
 
 export const Item = styled.div`
-	background: rgb(245, 245, 245);
+	background: black;
 	display: block;
 	flex: 0 0 100%;
 	position: relative;
