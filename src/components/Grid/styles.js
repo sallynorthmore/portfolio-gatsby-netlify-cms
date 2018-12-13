@@ -8,11 +8,11 @@ export const GridComponent = styled.div`
 `;
 
 export const Item = styled.div`
-	background: rgb(245, 245, 245);
-	border: 2px solid white;
+	background: black;
 	display: block;
-	flex: 0 0 50%;
+	flex: 0 0 100%;
 	position: relative;
+	margin-top: 2rem;
 
 	&:before {
 		display: block;
@@ -21,26 +21,15 @@ export const Item = styled.div`
 		padding-top: 100%;
 	}
 
-	&:nth-child(4n + 1),
-	&:nth-child(4n) {
-		background: #f2ede7;
+	@media (min-width: 520px) {
+		border: 2px solid white;
+		flex: 0 0 50%;
+		margin-top: 0;
 	}
 
 	@media (min-width: 720px) {
 		border: 5px solid white;
 		flex: 0 0 25%;
-
-		&:nth-child(4n + 1),
-		&:nth-child(4n) {
-			background: rgb(245, 245, 245);
-		}
-
-		&:nth-child(8n + 2),
-		&:nth-child(8n + 4),
-		&:nth-child(8n + 5),
-		&:nth-child(8n + 7) {
-			background: #f2ede7;
-		}
 	}
 `;
 
