@@ -17,6 +17,7 @@ import {
 	TagItem,
 	TagLink,
 	Title,
+	Subtitle,
 } from './styles';
 
 export const Project = ({
@@ -46,9 +47,10 @@ export const Project = ({
 
 			<Body>
 				<PostContent content={content} />
-
+				<Date>{date}</Date>
 				{tags && tags.length ? (
 					<Tags>
+						<Subtitle>Made with:</Subtitle>
 						{tags.map(tag => (
 							<TagItem key={tag + `tag`}>
 								<TagLink>{tag}</TagLink>
@@ -56,15 +58,11 @@ export const Project = ({
 						))}
 					</Tags>
 				) : null}
-
-				<Date>{date}</Date>
 			</Body>
 
 			<Nav>
 				<ProjectLinks previous={previous} next={next} />
 			</Nav>
-
-			<Footer anchor="#content" />
 		</ProjectComponent>
 	);
 };
