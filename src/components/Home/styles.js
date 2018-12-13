@@ -2,7 +2,6 @@ import styled, { keyframes } from 'styled-components';
 
 export const HomeComponent = styled.div`
 	text-align: center;
-	scroll-snap-type: y mandatory;
 `;
 
 const fadeIn = keyframes`
@@ -84,7 +83,7 @@ export const DownArrow = styled.div`
 export const Projects = styled.section`
 	scroll-snap-align: start;
 	min-height: 100vh;
-	padding-top: 5vh;
+	padding-top: 5rem;
 `;
 
 export const Title = styled.h2`

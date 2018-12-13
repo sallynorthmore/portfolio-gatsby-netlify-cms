@@ -27,7 +27,8 @@ export default function BaseStyles() {
 		}
 
 		html {
-			scroll-behavior: smooth
+			scroll-behavior: smooth;
+			scroll-snap-type: y mandatory;
 		}
 
 		/* stylelint-enable */
