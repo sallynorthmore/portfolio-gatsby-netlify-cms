@@ -7,37 +7,40 @@ class AnimatedText extends Component {
 		isFinished: false,
 	};
 
-	componentWillMount = () => {
-		this.txt = this.props.text;
-	};
+	componentWillMount = () => {};
 
 	componentDidMount = () => {
-		setTimeout(this.typeWriter, 800);
+		setTimeout(this.typeWriter, 1000);
 	};
 
 	i = 0;
-	txt = null;
-	speed = 100;
+	newText = '';
 
 	typeWriter = () => {
-		if (this.i < this.txt.length) {
-			if (this.txt.charAt(this.i) === '.') {
-				this.typedEl.innerHTML += this.txt.charAt(this.i);
+		const speed = 100;
+		const txt = this.props.text;
+
+		if (this.i < txt.length) {
+			if (txt.charAt(this.i) === '.') {
+				this.newText += txt.charAt(this.i);
 				this.i++;
-				setTimeout(this.typeWriter, this.speed * 10);
+				setTimeout(this.typeWriter, speed * 10);
 			} else {
-				this.typedEl.innerHTML += this.txt.charAt(this.i);
+				this.newText += txt.charAt(this.i);
 				this.i++;
-				setTimeout(this.typeWriter, this.speed);
+				setTimeout(this.typeWriter, speed);
 			}
 
-			if (this.i === this.txt.length) {
+			if (this.i === txt.length) {
 				this.setState({
 					isFinished: true,
 				});
 				this.props.onFinish();
+				return;
 			}
 		}
+
+		this.setState(() => ({ typedText: this.newText }));
 	};
 
 	render() {
@@ -58,7 +61,7 @@ class AnimatedText extends Component {
 }
 
 AnimatedText.propTypes = {
-	text: PropTypes.array,
+	text: PropTypes.string,
 	onFinish: PropTypes.func,
 };
 
