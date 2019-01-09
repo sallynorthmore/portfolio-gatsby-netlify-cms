@@ -9,7 +9,7 @@ title: About
 
 I have worked in digital for ten years now and enjoy building UIs in both freelance and permanent roles.
 
-I like to work on a range of ventures, from visually creative projects to large, thoughtful, design systems.
+I like to work on a range of ventures, from smaller, visually creative projects to large, thoughtful, design systems.
 
 Please contact me [here](/contact) for the quickest response, or via [LinkedIn](https://www.linkedin.com/in/sally-northmore-5568489/).
 
