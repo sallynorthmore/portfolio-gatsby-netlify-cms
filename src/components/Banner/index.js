@@ -43,6 +43,7 @@ class Banner extends Component {
 					<Link to="/">Sally Northmore</Link>
 				</Title>
 				<Contact to="/contact">Contact</Contact>
+				<Contact to="/about">About</Contact>
 			</BannerComponent>
 		);
 	}

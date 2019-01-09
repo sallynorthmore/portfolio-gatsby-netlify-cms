@@ -66,9 +66,14 @@ export const Contact = styled(Link)`
 	font-weight: 900;
 	letter-spacing: 0.1em;
 	line-height: 1.3;
+	margin-left: auto;
 	text-decoration: none;
 
 	&:hover {
 		text-decoration: underline;
+	}
+
+	&:last-child {
+		margin-left: 10px;
 	}
 `;
