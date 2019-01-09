@@ -20,6 +20,7 @@ import {} from './styles';
 
 class Home extends Component {
 	state = {
+		hasAnimated: false,
 		isContact: false,
 		contactName: '',
 		isScrolled: false,
@@ -27,11 +28,13 @@ class Home extends Component {
 	};
 
 	componentDidMount = () => {
-		if (this.props.contactState) {
+		if (this.props.location) {
 			this.setState({
-				isContact: this.props.contactState.isContact,
-				contactName: this.props.contactState.contactName,
+				hasAnimated: true,
+				isContact: this.props.location.isContact,
+				contactName: this.props.location.contactName,
 			});
+			this.handleTextLoaded();
 		}
 		window.addEventListener('scroll', this.onScroll);
 	};
@@ -79,12 +82,18 @@ class Home extends Component {
 
 	render() {
 		const { projects } = this.props;
-		const { isContact, contactName, isScrolled, isTextDone } = this.state;
+		const {
+			isContact,
+			contactName,
+			isScrolled,
+			isTextDone,
+			hasAnimated,
+		} = this.state;
 
 		const messageText = isContact
 			? `Thanks for your message, ${contactName}`
 			: null;
-		const textArray =
+		const introText =
 			'I’m a freelance frontend web developer. I live and work in London.';
 		return (
 			<HomeComponent>
@@ -108,7 +117,11 @@ class Home extends Component {
 				{messageText && <Message message={messageText} />}
 				<Intro>
 					<div>
-						<AnimatedText text={textArray} onFinish={this.handleTextLoaded} />
+						<AnimatedText
+							hasAnimated={hasAnimated}
+							text={introText}
+							onFinish={this.handleTextLoaded}
+						/>
 					</div>
 
 					{isTextDone && (
@@ -144,7 +157,7 @@ class Home extends Component {
 
 Home.propTypes = {
 	projects: PropTypes.array,
-	contactState: PropTypes.object,
+	location: PropTypes.object,
 };
 
 export default Home;

@@ -16,7 +16,7 @@ export default class IndexPage extends React.PureComponent {
 
 		return (
 			<Layout>
-				<Home projects={posts} contactState={location.state} />
+				<Home projects={posts} location={location.state} />
 			</Layout>
 		);
 	}

@@ -10,7 +10,13 @@ class AnimatedText extends Component {
 	componentWillMount = () => {};
 
 	componentDidMount = () => {
-		setTimeout(this.typeWriter, 1000);
+		if (this.props.hasAnimated) {
+			this.setState({
+				isFinished: true,
+			});
+		} else {
+			setTimeout(this.typeWriter, 1000);
+		}
 	};
 
 	i = 0;
@@ -45,6 +51,7 @@ class AnimatedText extends Component {
 
 	render() {
 		const { isFinished, typedText } = this.state;
+		const { text, hasAnimated } = this.props;
 		return (
 			<Inner isFinished={isFinished}>
 				<div
@@ -52,8 +59,8 @@ class AnimatedText extends Component {
 						this.typedEl = el;
 					}}
 				>
-					{' '}
-					{typedText}
+					{hasAnimated && text}
+					{!hasAnimated && typedText}
 				</div>
 			</Inner>
 		);
@@ -61,10 +68,13 @@ class AnimatedText extends Component {
 }
 
 AnimatedText.propTypes = {
+	hasAnimated: PropTypes.bool,
 	text: PropTypes.string,
 	onFinish: PropTypes.func,
 };
 
-AnimatedText.defaultProps = {};
+AnimatedText.defaultProps = {
+	hasAnimated: false,
+};
 
 export default AnimatedText;
