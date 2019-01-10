@@ -2,6 +2,8 @@ import styled, { keyframes } from 'styled-components';
 
 export const HomeComponent = styled.div`
 	text-align: center;
+	max-width: 1280px;
+	margin: 0 auto;
 `;
 
 export const Header = styled.div`

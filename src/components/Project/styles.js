@@ -4,6 +4,8 @@ import styled from 'styled-components';
 export const ProjectComponent = styled.div`
 	position: relative;
 	text-align: center;
+	max-width: 1280px;
+	margin: 0 auto;
 `;
 
 export const ProjectBanner = styled.div`
