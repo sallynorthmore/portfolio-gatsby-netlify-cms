@@ -1,5 +1,13 @@
-import styled from 'styled-components';
-// import { Link } from 'gatsby';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+`;
 
 export const ProjectComponent = styled.div`
 	position: relative;
@@ -14,6 +22,14 @@ export const ProjectBanner = styled.div`
 	left: 0;
 	width: 100%;
 	z-index: 100;
+`;
+
+export const Inner = styled.div`
+	animation-delay: 255ms;
+	animation-duration: 1000ms;
+	animation-name: ${fadeIn};
+	animation-fill-mode: forwards;
+	opacity: 0;
 `;
 
 export const Header = styled.div`

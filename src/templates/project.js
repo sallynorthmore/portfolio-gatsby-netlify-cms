@@ -6,7 +6,7 @@ import { HTMLContent } from '../components/Content';
 import Layout from '../components/Layout';
 import Project from '../components/Project';
 
-const ProjectPage = ({ data, pageContext }) => {
+const ProjectPage = ({ data, pageContext, location }) => {
 	const { markdownRemark: post } = data;
 	const { prev, next } = pageContext;
 
@@ -22,6 +22,7 @@ const ProjectPage = ({ data, pageContext }) => {
 				previous={prev}
 				tags={post.frontmatter.tags}
 				title={post.frontmatter.title}
+				location={location.state}
 			/>
 		</Layout>
 	);

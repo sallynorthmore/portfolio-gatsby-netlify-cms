@@ -81,7 +81,7 @@ class Home extends Component {
 	};
 
 	render() {
-		const { projects } = this.props;
+		const { projects, location } = this.props;
 		const {
 			isContact,
 			contactName,
@@ -107,7 +107,7 @@ class Home extends Component {
 						>
 							{props => (
 								<animated.div style={props}>
-									<Banner />
+									<Banner location={location} />
 								</animated.div>
 							)}
 						</Spring>
