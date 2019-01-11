@@ -70,8 +70,9 @@ export const GridLink = styled(Link)`
 `;
 
 export const Thumbnail = styled.div`
-	position: static;
+	background-color: black;
 	height: 50vh;
+	position: static;
 
 	${props =>
 		props.image

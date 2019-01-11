@@ -19,10 +19,11 @@ export const Header = styled.div`
 `;
 
 export const Intro = styled.h1`
-	scroll-snap-align: start;
+	/* scroll-snap-align: start; */
 	display: flex;
 	height: 100vh;
 	justify-content: center;
+	width: 100%;
 
 	& > div:first-child {
 		margin: auto;
@@ -87,9 +88,10 @@ export const DownArrow = styled.div`
 `;
 
 export const Projects = styled.section`
-	scroll-snap-align: start;
+	margin-top: 30vh;
 	min-height: 100vh;
-	padding-top: 5rem;
+	position: relative;
+	z-index: 0;
 `;
 
 export const Title = styled.h2`
@@ -98,6 +100,7 @@ export const Title = styled.h2`
 	font-weight: 900;
 	letter-spacing: 0.1em;
 	line-height: 1.3;
+	margin-bottom: 4rem;
 	text-decoration: none;
 	text-transform: uppercase;
 

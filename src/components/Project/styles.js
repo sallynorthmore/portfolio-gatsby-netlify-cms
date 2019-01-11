@@ -148,7 +148,7 @@ export const Date = styled.div`
 `;
 
 export const Nav = styled.div`
-	left: 0
+	left: 0;
 	top: 0;
-	width: 100%
+	width: 100%;
 `;
