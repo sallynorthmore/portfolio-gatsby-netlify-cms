@@ -17,6 +17,6 @@ Please contact me [here](/contact) for the quickest response, or via [LinkedIn](
 
 In my free time, I focus on horticulture and gardening, environmentalism, running, playing piano, theatre, comedy and the outdoors generally.
 
-Currently I run a project called [The Switch](http:theswitch.org), where I document our household’s transition away from its dependence on plastic, towards a less throwaway life. It’s a particular goal of mine, and 2019 is my first real go of it 🤞.
+Currently I run a project called [The Switch](https://www.instagram.com/theswitchorg/), where I document our household’s transition away from its dependence on plastic, towards a less throwaway life. It’s a particular goal of mine, and 2019 is my first real go of it 🤞.
 
-Follow me on [Instagram](https://www.instagram.com/theswitchorg/) and [The Switch](http:theswitch.org).
+Follow me on [Instagram](https://www.instagram.com/theswitchorg/) and [The Switch](https://the-switch.org/).

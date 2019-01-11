@@ -33,6 +33,10 @@ export const Item = styled.div`
 		border: 5px solid white;
 		flex: 0 0 25%;
 	}
+
+	@media (min-width: 1200px) {
+		flex: 0 0 20%;
+	}
 `;
 
 export const GridLink = styled(Link)`
@@ -66,8 +70,9 @@ export const GridLink = styled(Link)`
 `;
 
 export const Thumbnail = styled.div`
-	position: static;
+	background-color: black;
 	height: 50vh;
+	position: static;
 
 	${props =>
 		props.image

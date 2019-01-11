@@ -6,6 +6,7 @@ import Content from '../Content';
 import ProjectLinks from '../ProjectLinks';
 import {
 	ProjectComponent,
+	Inner,
 	Body,
 	Client,
 	Date,
@@ -30,6 +31,7 @@ export const Project = ({
 	previous,
 	tags,
 	title,
+	location,
 }) => {
 	const PostContent = contentComponent || Content;
 
@@ -37,31 +39,33 @@ export const Project = ({
 		<ProjectComponent>
 			<Helmet title={`Project: ${title}`} />
 			<ProjectBanner>
-				<Banner />
+				<Banner location={location} />
 			</ProjectBanner>
 
-			<Header>
-				<Title>
-					{title}
-					<Client>{client}</Client>
-				</Title>
-				<Description>{description}</Description>
-			</Header>
+			<Inner>
+				<Header>
+					<Title>
+						{title}
+						<Client>{client}</Client>
+					</Title>
+					<Description>{description}</Description>
+				</Header>
 
-			<Body>
-				<PostContent content={content} />
-				<Date>{date}</Date>
-				{tags && tags.length ? (
-					<Tags>
-						<Subtitle>Made with:</Subtitle>
-						{tags.map(tag => (
-							<TagItem key={tag + `tag`}>
-								<TagLink>{tag}</TagLink>
-							</TagItem>
-						))}
-					</Tags>
-				) : null}
-			</Body>
+				<Body>
+					<PostContent content={content} />
+					<Date>{date}</Date>
+					{tags && tags.length ? (
+						<Tags>
+							<Subtitle>Made with:</Subtitle>
+							{tags.map(tag => (
+								<TagItem key={tag + `tag`}>
+									<TagLink>{tag}</TagLink>
+								</TagItem>
+							))}
+						</Tags>
+					) : null}
+				</Body>
+			</Inner>
 
 			<Nav>
 				<ProjectLinks previous={previous} next={next} />
@@ -71,6 +75,7 @@ export const Project = ({
 };
 
 Project.propTypes = {
+	// location: PropTypes.shape,
 	client: PropTypes.string,
 	content: PropTypes.node.isRequired,
 	contentComponent: PropTypes.func,

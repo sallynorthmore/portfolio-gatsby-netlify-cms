@@ -5,6 +5,16 @@ import { BannerComponent, Title, Contact } from './styles';
 class Banner extends Component {
 	state = {
 		isExpanded: true,
+		hasFaded: false,
+	};
+
+	componentWillMount = () => {
+		// Are we coming from another page within the app? (ie, has already faded in)
+		if (this.props.location) {
+			this.setState({
+				hasFaded: true,
+			});
+		}
 	};
 
 	componentDidMount = () => {
@@ -31,13 +41,15 @@ class Banner extends Component {
 	};
 
 	render() {
-		const { isExpanded } = this.state;
+		const { isExpanded, hasFaded } = this.state;
+
 		return (
 			<BannerComponent
 				ref={el => {
 					this.bannerEl = el;
 				}}
 				isExpanded={isExpanded}
+				hasFaded={hasFaded}
 			>
 				<Title>
 					<Link to="/">Sally Northmore</Link>

@@ -11,11 +11,6 @@ const fadeIn = keyframes`
 `;
 
 export const BannerComponent = styled.header`
-	animation-delay: 250ms;
-	animation-duration: 1000ms;
-	animation-name: ${fadeIn};
-	animation-fill-mode: forwards;
-	opacity: 0;
 	background: rgba(255, 255, 255, 0.8);
 	display: flex;
 	align-items: center;
@@ -30,6 +25,19 @@ export const BannerComponent = styled.header`
 	width: 100%;
 	z-index: 1;
 	transform: translateY(-1.25rem);
+
+	/* Fade in */
+	${props =>
+		!props.hasFaded
+			? `
+		animation-delay: 250ms;
+		animation-duration: 1000ms;
+		animation-name: ${fadeIn};
+		animation-fill-mode: forwards;
+		opacity: 0;
+
+		`
+			: null};
 
 	/* Animate */
 	${props =>

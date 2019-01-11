@@ -1,9 +1,19 @@
-import styled from 'styled-components';
-// import { Link } from 'gatsby';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+`;
 
 export const ProjectComponent = styled.div`
 	position: relative;
 	text-align: center;
+	max-width: 1280px;
+	margin: 0 auto;
 `;
 
 export const ProjectBanner = styled.div`
@@ -12,6 +22,14 @@ export const ProjectBanner = styled.div`
 	left: 0;
 	width: 100%;
 	z-index: 100;
+`;
+
+export const Inner = styled.div`
+	animation-delay: 255ms;
+	animation-duration: 1000ms;
+	animation-name: ${fadeIn};
+	animation-fill-mode: forwards;
+	opacity: 0;
 `;
 
 export const Header = styled.div`
@@ -130,7 +148,7 @@ export const Date = styled.div`
 `;
 
 export const Nav = styled.div`
-	left: 0
+	left: 0;
 	top: 0;
-	width: 100%
+	width: 100%;
 `;
