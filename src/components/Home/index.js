@@ -33,14 +33,14 @@ class Home extends Component {
 				skipBannerAnimation: true,
 			});
 		}
-		// if (this.props.location) {
-		// 	this.setState({
-		// 		hasAnimated: true,
-		// 		isContact: this.props.location.isContact,
-		// 		contactName: this.props.location.contactName,
-		// 	});
-		// 	this.handleTextLoaded();
-		// }
+
+		if (this.props.hasContacted) {
+			this.setState({
+				isContact: true,
+				contactName: this.props.contactName,
+			});
+			this.handleTextLoaded();
+		}
 		window.addEventListener('scroll', this.onScroll);
 	};
 
@@ -182,7 +182,9 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+	contactName: PropTypes.string,
 	hasVisitedHome: PropTypes.bool,
+	hasContacted: PropTypes.bool,
 	projects: PropTypes.array,
 	location: PropTypes.object,
 	logVisit: PropTypes.func,
@@ -190,6 +192,8 @@ Home.propTypes = {
 
 const mapStateToProps = state => {
 	return {
+		hasContacted: state.logVisits.hasContacted,
+		contactName: state.logVisits.contactName,
 		hasVisitedHome: state.logVisits.hasVisitedHome,
 	};
 };

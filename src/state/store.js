@@ -1,6 +1,10 @@
 import { createStore as reduxCreateStore, combineReducers } from 'redux';
 
-const initialState = { count: 0, hasVisitedHome: false };
+const initialState = {
+	count: 0,
+	hasVisitedHome: false,
+	hasContacted: false,
+};
 
 const counter = (state = initialState, action) => {
 	switch (action.type) {
@@ -26,6 +30,7 @@ const logVisits = (state = initialState, action) => {
 		case 'SENT_CONTACT_FORM':
 			return Object.assign({}, state, {
 				hasContacted: true,
+				contactName: action.contactName,
 			});
 		default:
 			return state;

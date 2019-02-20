@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { navigate } from 'gatsby';
 import { ContactFormComponent, Title, Label, Button } from './styles';
 
@@ -13,6 +14,11 @@ class ContactForm extends React.Component {
 	state = { name: '', email: '', message: '' };
 
 	handleSubmit = e => {
+		this.props.dispatch({
+			type: 'SENT_CONTACT_FORM',
+			contactName: this.state.name,
+		});
+
 		fetch('/', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -83,5 +89,7 @@ class ContactForm extends React.Component {
 ContactForm.propTypes = {
 	title: PropTypes.string,
 };
+
+ContactForm = connect()(ContactForm);
 
 export default ContactForm;
