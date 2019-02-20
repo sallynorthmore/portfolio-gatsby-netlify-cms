@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Spring, animated, config } from 'react-spring';
-import Banner from '../Banner';
+import Header from '../Header';
 import AnimatedText from '../AnimatedText';
 import Grid from '../Grid';
 import Message from '../Message';
 import { FaArrowDown } from 'react-icons/fa';
 import {
 	HomeComponent,
-	Header,
 	Intro,
 	DownArrow,
 	Nav,
@@ -24,17 +23,24 @@ class Home extends Component {
 		contactName: '',
 		isScrolled: false,
 		isTextDone: false,
+		skipBannerAnimation: false,
 	};
 
 	componentDidMount = () => {
-		if (this.props.location) {
+		if (this.props.hasVisitedHome) {
 			this.setState({
 				hasAnimated: true,
-				isContact: this.props.location.isContact,
-				contactName: this.props.location.contactName,
+				skipBannerAnimation: true,
 			});
-			this.handleTextLoaded();
 		}
+		// if (this.props.location) {
+		// 	this.setState({
+		// 		hasAnimated: true,
+		// 		isContact: this.props.location.isContact,
+		// 		contactName: this.props.location.contactName,
+		// 	});
+		// 	this.handleTextLoaded();
+		// }
 		window.addEventListener('scroll', this.onScroll);
 	};
 
@@ -86,13 +92,14 @@ class Home extends Component {
 	};
 
 	render() {
-		const { projects, location, hasVisitedHome } = this.props;
+		const { projects, location } = this.props;
 		const {
 			isContact,
 			contactName,
 			isScrolled,
 			isTextDone,
 			hasAnimated,
+			skipBannerAnimation,
 		} = this.state;
 
 		const introHeight = isScrolled ? '50vh' : '100vh';
@@ -102,27 +109,16 @@ class Home extends Component {
 			: null;
 		const introText =
 			'I’m a freelance frontend web developer. I live and work in London.';
+
 		return (
 			<HomeComponent>
-				<Header>
-					{isTextDone && (
-						<Spring
-							native
-							config={{ delay: 500 }}
-							from={{ transform: 'translateY(-200px)' }}
-							to={{ transform: 'translateY(0)' }}
-						>
-							{props => (
-								<animated.div style={props}>
-									<Banner location={location} />
-								</animated.div>
-							)}
-						</Spring>
-					)}
-				</Header>
+				<Header
+					location={location}
+					isAnimated={!skipBannerAnimation}
+					shouldAnimate={isTextDone}
+				/>
 				{messageText && <Message message={messageText} />}
-				{hasVisitedHome && <h1>I've been here before!</h1>}
-				{!hasVisitedHome && <h1>I'm new!</h1>}
+
 				<Spring
 					native
 					config={config.molasses}
