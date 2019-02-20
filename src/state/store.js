@@ -1,7 +1,8 @@
-import { createStore as reduxCreateStore } from 'redux';
+import { createStore as reduxCreateStore, combineReducers } from 'redux';
 
-const myApp = (state, action) => {
-	// console.log(`action is ${action.type}`);
+const initialState = { count: 0, hasVisitedHome: false };
+
+const counter = (state = initialState, action) => {
 	switch (action.type) {
 		case 'INCREMENT':
 			return Object.assign({}, state, {
@@ -11,6 +12,13 @@ const myApp = (state, action) => {
 			return Object.assign({}, state, {
 				count: state.count - 1,
 			});
+		default:
+			return state;
+	}
+};
+
+const logVisits = (state = initialState, action) => {
+	switch (action.type) {
 		case 'VISITED_HOME':
 			return Object.assign({}, state, {
 				hasVisitedHome: true,
@@ -24,31 +32,11 @@ const myApp = (state, action) => {
 	}
 };
 
-const initialState = { count: 0, hasVisitedHome: false };
+const myApp = combineReducers({
+	counter,
+	logVisits,
+});
 
-const createStore = () => reduxCreateStore(myApp, initialState);
+const createStore = () => reduxCreateStore(myApp);
 
 export default createStore;
-
-//
-// const counter = (state = 0, action) => {
-// 	switch (action.type) {
-// 		case 'INCREMENT':
-// 			return state + 1;
-// 		case 'DECREMENT':
-// 			return state - 1;
-// 		default:
-// 			return state;
-// 	}
-// };
-//
-// const store = createStore(counter);
-// const render = () => {
-// 	// document.body.innerText = store.getState();
-// 	console.log(`get state = ${store.getState()}`);
-// };
-// store.subscribe(render);
-// render();
-// document.addEventListener('click', () => {
-// 	store.dispatch({ type: 'INCREMENT' });
-// });

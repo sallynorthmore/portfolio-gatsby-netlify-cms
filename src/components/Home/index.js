@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Spring, animated, config } from 'react-spring';
 import Banner from '../Banner';
 import AnimatedText from '../AnimatedText';
@@ -15,8 +16,6 @@ import {
 	Title,
 	Projects,
 } from './styles';
-
-import {} from './styles';
 
 class Home extends Component {
 	state = {
@@ -46,6 +45,7 @@ class Home extends Component {
 				contactName: '',
 			});
 		}
+		this.props.logVisit();
 		window.removeEventListener('scroll', this.onScroll);
 	}
 
@@ -86,7 +86,7 @@ class Home extends Component {
 	};
 
 	render() {
-		const { projects, location } = this.props;
+		const { projects, location, hasVisitedHome } = this.props;
 		const {
 			isContact,
 			contactName,
@@ -121,6 +121,8 @@ class Home extends Component {
 					)}
 				</Header>
 				{messageText && <Message message={messageText} />}
+				{hasVisitedHome && <h1>I've been here before!</h1>}
+				{!hasVisitedHome && <h1>I'm new!</h1>}
 				<Spring
 					native
 					config={config.molasses}
@@ -184,8 +186,27 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+	hasVisitedHome: PropTypes.bool,
 	projects: PropTypes.array,
 	location: PropTypes.object,
+	logVisit: PropTypes.func,
 };
 
-export default Home;
+const mapStateToProps = state => {
+	return {
+		hasVisitedHome: state.logVisits.hasVisitedHome,
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		logVisit: () => dispatch({ type: 'VISITED_HOME' }),
+	};
+};
+
+const ConnectedHome = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Home);
+
+export default ConnectedHome;
