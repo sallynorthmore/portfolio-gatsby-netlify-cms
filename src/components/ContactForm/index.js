@@ -14,10 +14,13 @@ class ContactForm extends React.Component {
 	state = { name: '', email: '', message: '' };
 
 	handleSubmit = e => {
-		this.props.dispatch({
-			type: 'SENT_CONTACT_FORM',
-			contactName: this.state.name,
-		});
+		this.props.dispatch(
+			{
+				type: 'SEND_CONTACT_FORM',
+				contactName: this.state.name,
+			},
+			{ type: ' LOG_VISIT' }
+		);
 
 		fetch('/', {
 			method: 'POST',

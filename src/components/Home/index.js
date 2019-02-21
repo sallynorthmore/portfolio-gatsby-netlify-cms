@@ -27,11 +27,12 @@ class Home extends Component {
 	};
 
 	componentDidMount = () => {
-		if (this.props.hasVisitedHome) {
+		if (this.props.hasVisited) {
 			this.setState({
 				hasAnimated: true,
 				skipBannerAnimation: true,
 			});
+			this.handleTextLoaded();
 		}
 
 		if (this.props.hasContacted) {
@@ -91,8 +92,12 @@ class Home extends Component {
 		this.setState(() => ({ isTextDone: true }));
 	};
 
+	handleAnimatedTextClick = () => {
+		this.setState(() => ({ isTextDone: true, hasAnimated: true }));
+	};
+
 	render() {
-		const { projects, location } = this.props;
+		const { projects } = this.props;
 		const {
 			isContact,
 			contactName,
@@ -112,11 +117,8 @@ class Home extends Component {
 
 		return (
 			<HomeComponent>
-				<Header
-					location={location}
-					isAnimated={!skipBannerAnimation}
-					shouldAnimate={isTextDone}
-				/>
+				<Header isAnimated={!skipBannerAnimation} shouldAnimate={isTextDone} />
+
 				{messageText && <Message message={messageText} />}
 
 				<Spring
@@ -138,7 +140,7 @@ class Home extends Component {
 								...props,
 							}}
 						>
-							<Intro>
+							<Intro onClick={this.handleAnimatedTextClick}>
 								<div>
 									<AnimatedText
 										hasAnimated={hasAnimated}
@@ -183,10 +185,9 @@ class Home extends Component {
 
 Home.propTypes = {
 	contactName: PropTypes.string,
-	hasVisitedHome: PropTypes.bool,
+	hasVisited: PropTypes.bool,
 	hasContacted: PropTypes.bool,
 	projects: PropTypes.array,
-	location: PropTypes.object,
 	logVisit: PropTypes.func,
 };
 
@@ -194,13 +195,13 @@ const mapStateToProps = state => {
 	return {
 		hasContacted: state.logVisits.hasContacted,
 		contactName: state.logVisits.contactName,
-		hasVisitedHome: state.logVisits.hasVisitedHome,
+		hasVisited: state.logVisits.hasVisited,
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		logVisit: () => dispatch({ type: 'VISITED_HOME' }),
+		logVisit: () => dispatch({ type: 'LOG_VISIT' }),
 	};
 };
 

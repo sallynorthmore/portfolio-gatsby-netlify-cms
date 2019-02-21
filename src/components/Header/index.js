@@ -4,7 +4,7 @@ import Banner from '../Banner';
 import { Spring, animated } from 'react-spring';
 import { Inner } from './styles';
 
-function Header({ isAnimated, location, shouldAnimate }) {
+function Header({ isAnimated, shouldAnimate }) {
 	return (
 		<Inner>
 			{isAnimated && (
@@ -17,12 +17,12 @@ function Header({ isAnimated, location, shouldAnimate }) {
 				>
 					{props => (
 						<animated.div style={props}>
-							<Banner location={location} />
+							<Banner />
 						</animated.div>
 					)}
 				</Spring>
 			)}
-			{!isAnimated && <Banner location={location} shouldFade={false} />}
+			{!isAnimated && <Banner shouldFade={false} />}
 		</Inner>
 	);
 }
@@ -30,7 +30,6 @@ function Header({ isAnimated, location, shouldAnimate }) {
 Header.propTypes = {
 	shouldAnimate: PropTypes.bool,
 	isAnimated: PropTypes.bool,
-	location: PropTypes.object,
 };
 
 Header.defaultProps = {
