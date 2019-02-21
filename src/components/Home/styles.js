@@ -6,18 +6,6 @@ export const HomeComponent = styled.div`
 	margin: 0 auto;
 `;
 
-export const Header = styled.div`
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 100;
-
-	& > div {
-		position: relative;
-	}
-`;
-
 export const Intro = styled.h1`
 	/* scroll-snap-align: start; */
 	display: flex;

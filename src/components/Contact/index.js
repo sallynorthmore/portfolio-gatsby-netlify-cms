@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Banner from '../Banner';
+import Header from '../Header';
 import ContactForm from '../ContactForm';
-import { ContactComponent, Form, Header } from './styles';
+import { ContactComponent, Form } from './styles';
 
 const Contact = ({ content, contentComponent }) => {
 	// const PageContent = contentComponent || Content;
 
 	return (
 		<ContactComponent>
-			<Header>
-				<Banner />
-			</Header>
+			<Header isAnimated={false} />
+
 			<Form>
 				<ContactForm title="Please get in touch with me about contract and permanent opportunities" />
 			</Form>

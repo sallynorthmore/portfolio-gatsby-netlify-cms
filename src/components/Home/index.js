@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Spring, animated, config } from 'react-spring';
-import Banner from '../Banner';
+import Header from '../Header';
 import AnimatedText from '../AnimatedText';
 import Grid from '../Grid';
 import Message from '../Message';
 import { FaArrowDown } from 'react-icons/fa';
 import {
 	HomeComponent,
-	Header,
 	Intro,
 	DownArrow,
 	Nav,
 	Title,
 	Projects,
 } from './styles';
-
-import {} from './styles';
 
 class Home extends Component {
 	state = {
@@ -25,14 +23,22 @@ class Home extends Component {
 		contactName: '',
 		isScrolled: false,
 		isTextDone: false,
+		skipBannerAnimation: false,
 	};
 
 	componentDidMount = () => {
-		if (this.props.location) {
+		if (this.props.hasVisited) {
 			this.setState({
 				hasAnimated: true,
-				isContact: this.props.location.isContact,
-				contactName: this.props.location.contactName,
+				skipBannerAnimation: true,
+			});
+			this.handleTextLoaded();
+		}
+
+		if (this.props.hasContacted) {
+			this.setState({
+				isContact: true,
+				contactName: this.props.contactName,
 			});
 			this.handleTextLoaded();
 		}
@@ -46,6 +52,7 @@ class Home extends Component {
 				contactName: '',
 			});
 		}
+		this.props.logVisit();
 		window.removeEventListener('scroll', this.onScroll);
 	}
 
@@ -85,14 +92,19 @@ class Home extends Component {
 		this.setState(() => ({ isTextDone: true }));
 	};
 
+	handleAnimatedTextClick = () => {
+		this.setState(() => ({ isTextDone: true, hasAnimated: true }));
+	};
+
 	render() {
-		const { projects, location } = this.props;
+		const { projects } = this.props;
 		const {
 			isContact,
 			contactName,
 			isScrolled,
 			isTextDone,
 			hasAnimated,
+			skipBannerAnimation,
 		} = this.state;
 
 		const introHeight = isScrolled ? '50vh' : '100vh';
@@ -102,25 +114,13 @@ class Home extends Component {
 			: null;
 		const introText =
 			'I’m a freelance frontend web developer. I live and work in London.';
+
 		return (
 			<HomeComponent>
-				<Header>
-					{isTextDone && (
-						<Spring
-							native
-							config={{ delay: 500 }}
-							from={{ transform: 'translateY(-200px)' }}
-							to={{ transform: 'translateY(0)' }}
-						>
-							{props => (
-								<animated.div style={props}>
-									<Banner location={location} />
-								</animated.div>
-							)}
-						</Spring>
-					)}
-				</Header>
+				<Header isAnimated={!skipBannerAnimation} shouldAnimate={isTextDone} />
+
 				{messageText && <Message message={messageText} />}
+
 				<Spring
 					native
 					config={config.molasses}
@@ -140,7 +140,7 @@ class Home extends Component {
 								...props,
 							}}
 						>
-							<Intro>
+							<Intro onClick={this.handleAnimatedTextClick}>
 								<div>
 									<AnimatedText
 										hasAnimated={hasAnimated}
@@ -184,8 +184,30 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+	contactName: PropTypes.string,
+	hasVisited: PropTypes.bool,
+	hasContacted: PropTypes.bool,
 	projects: PropTypes.array,
-	location: PropTypes.object,
+	logVisit: PropTypes.func,
 };
 
-export default Home;
+const mapStateToProps = state => {
+	return {
+		hasContacted: state.logVisits.hasContacted,
+		contactName: state.logVisits.contactName,
+		hasVisited: state.logVisits.hasVisited,
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		logVisit: () => dispatch({ type: 'LOG_VISIT' }),
+	};
+};
+
+const ConnectedHome = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Home);
+
+export default ConnectedHome;

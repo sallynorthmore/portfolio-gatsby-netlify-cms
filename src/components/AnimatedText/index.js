@@ -5,9 +5,8 @@ import { Inner } from './styles.js';
 class AnimatedText extends Component {
 	state = {
 		isFinished: false,
+		skipToEnd: false,
 	};
-
-	componentWillMount = () => {};
 
 	componentDidMount = () => {
 		if (this.props.hasAnimated) {
@@ -50,7 +49,7 @@ class AnimatedText extends Component {
 	};
 
 	render() {
-		const { isFinished, typedText } = this.state;
+		const { isFinished, typedText, skipToEnd } = this.state;
 		const { text, hasAnimated } = this.props;
 		return (
 			<Inner isFinished={isFinished}>

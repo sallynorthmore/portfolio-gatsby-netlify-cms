@@ -14,7 +14,7 @@ export const MessageComponent = styled.div`
 	text-align: center;
 	top: 0;
 	width: 100%;
-	z-index: 4;
+	z-index: 8;
 
 	& p {
 		color: white;
@@ -23,6 +23,5 @@ export const MessageComponent = styled.div`
 		letter-spacing: 0.1em;
 		line-height: 1.3;
 		text-decoration: none;
-		// text-transform: uppercase;
 	}
 `;

@@ -10,7 +10,7 @@ class Banner extends Component {
 
 	componentWillMount = () => {
 		// Are we coming from another page within the app? (ie, has already faded in)
-		if (this.props.location) {
+		if (!this.props.shouldFade) {
 			this.setState({
 				hasFaded: true,
 			});
