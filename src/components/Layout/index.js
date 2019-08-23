@@ -5,7 +5,9 @@ import { LayoutComponent } from './styles';
 
 const TemplateWrapper = ({ children }) => (
 	<LayoutComponent>
-		<Helmet title="Sally Northmore" />
+		<Helmet title="Sally Northmore">
+			<script src="https://assets.digitalclimatestrike.net/widget.js" async></script>
+		</Helmet>
 
 		{children}
 	</LayoutComponent>
