@@ -113,7 +113,7 @@ class Home extends Component {
 			? `Thanks for your message, ${contactName}`
 			: null;
 		const introText =
-			'I’m a freelance frontend web developer. I live and work in London.';
+			'Hello. I’m a frontend web developer. I live and work in London.';
 
 		return (
 			<HomeComponent>
