@@ -13,6 +13,10 @@ const TemplateWrapper = ({ children }) => (
 		</Helmet>
 
 		{children}
+		<a title="CO2 Parts Per Million (PPM) in the atmosphere" href="https://co2ppmbadge.piazza.energy/" target="_blank" className='ppmBadge'>
+			<img src="https://co2ppmbadge.piazza.energy/latest/ppm00.svg" /><br/>
+			<img src="https://co2ppmbadge.piazza.energy/latest/ppm10.svg" />
+		</a>
 	</LayoutComponent>
 );
 
