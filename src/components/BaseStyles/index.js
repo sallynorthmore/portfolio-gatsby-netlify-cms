@@ -5,7 +5,7 @@ export default function BaseStyles() {
 		@import url('https://fonts.googleapis.com/css?family=Lato:400,900');
 		@import url("https://use.typekit.net/kox2esi.css");
 
-		@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Caveat|Cormorant+Garamond|La+Belle+Aurore&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Alegreya|Amatic+SC|Caveat|Cormorant+Garamond|La+Belle+Aurore&display=swap');
 
 /*
 		font-family: 'Caveat', cursive;
@@ -15,7 +15,7 @@ export default function BaseStyles() {
 
 		:root {
 			--handwriting: 'Amatic SC', cursive;
-			--serif: 'Cormorant Garamond';
+			--serif: 'Alegreya', serif;
 		}
 
 		/* Minimal reset that keeps insepector output clean */

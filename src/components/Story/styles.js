@@ -2,15 +2,28 @@ import styled from 'styled-components';
 
 export const Inner = styled.div`
   background: #fdf6d8 repeat-y;
-  padding: 0 0 0 2rem;
+  padding: 0 0 0 1rem;
   min-height: 100vh;
   width: 100%;
-  font-family: var(--handwriting);
+  font-family: var(--serif);
   font-size: 2rem;
 `;
 
+export const Text = styled.p`
+  margin-left: 3rem;
+  max-width: 500px;
+  text-align: left;
+
+  & span {
+    display: block;
+    text-align: right;
+    margin-top: 2rem;
+  }
+`;
+
 export const River = styled.div`
-  background: url('/img/river2.svg') top center;
+  /* margin-top: 50vh; */
+  background: url('/img/river2.svg') top center repeat-y;
   background-size: contain;
   height: 100%;
   width: 100%;
