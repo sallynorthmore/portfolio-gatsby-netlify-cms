@@ -11,10 +11,11 @@ export const Intro = styled.h1`
 	display: flex;
 	height: 100vh;
 	justify-content: center;
+	text-align: left;
 	width: 100%;
 
 	& > div:first-child {
-		margin: auto;
+		margin: auto auto auto 0;
 		top: -3rem;
 		position: relative;
 	}
