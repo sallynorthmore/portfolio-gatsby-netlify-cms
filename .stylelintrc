@@ -6,11 +6,6 @@
     "stylelint-config-recommended",
     "stylelint-config-styled-components"
   ],
-  "plugins": [
-    "stylelint-order",
-    "stylelint-number-z-index-constraint",
-    "stylelint-declaration-use-variable"
-  ],
   "rules": {
     "at-rule-empty-line-before": [
       "always",
@@ -35,9 +30,6 @@
       {
         "severity": "warning"
       }
-    ],
-    "sh-waqar/declaration-use-variable": [
-      ["/color/", "font-size", "font", "line-height"]
     ],
     "color-hex-length": "short",
     "color-no-hex": true,
@@ -68,17 +60,7 @@
     "media-feature-name-no-vendor-prefix": true,
     "media-feature-name-whitelist": ["min-height", "min-width"],
     "number-max-precision": 4,
-    "order/order": ["custom-properties", "declarations", "rules", "at-rules"],
-    "order/properties-alphabetical-order": [
-      true,
-      {
-        "severity": "warning"
-      }
-    ],
-    "plugin/number-z-index-constraint": {
-      "min": 0,
-      "max": 10
-    },
+    "rules", "at-rules"],
     "property-no-vendor-prefix": true,
     "rule-empty-line-before": [
       "always",

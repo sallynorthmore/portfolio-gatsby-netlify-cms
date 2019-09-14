@@ -5,9 +5,9 @@ export const Content = [
   { offset: 1.1, text: 'and let that guide me.' },
   {
     offset: 2,
-    text: 'Sometimes, it’s difficult to explain who I am,where I come from,'
+    text:
+      'Sometimes, that can make it difficult to thread together the perfect backstory...'
   },
-  { offset: 2.2, text: 'what makes me tick.' },
   {
     offset: 2.6,
     text: 'I started out artistic. I went to a famous arts highschool'
@@ -20,6 +20,6 @@ export const Content = [
   {
     offset: 3,
     text:
-      'So at 17, I left NYC for Tucson, Arizona to study the stars in an astrophysics program'
+      'So at 17, I left NYC for university in Tucson, Arizona, to study the stars and astrophysics.'
   }
 ];
