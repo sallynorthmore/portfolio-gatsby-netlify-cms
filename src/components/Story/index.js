@@ -14,10 +14,10 @@ class Story extends React.Component {
             horizontal={false}
             pages={Content.length}
           >
-            <ParallaxLayer offset={0} factor={10} speed={1}>
+            <ParallaxLayer offset={0} factor={10} speed={0.6}>
               <S.River />
             </ParallaxLayer>
-            <ParallaxLayer offset={10} factor={10} speed={1}>
+            <ParallaxLayer offset={10} factor={10} speed={0.6}>
               <S.River />
             </ParallaxLayer>
 

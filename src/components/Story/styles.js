@@ -26,7 +26,7 @@ const fadeRiver = keyframes`
 
   to {
     opacity: 1;
-		transform: translateY(-20px);
+		transform: translateY(-50px);
   }
 `;
 
@@ -52,21 +52,21 @@ export const Text = styled.p`
 `;
 
 export const River = styled.div`
-  animation-delay: 3s;
-  animation-name: ${fadeRiver};
-  animation-duration: 1s;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-  opacity: 0;
-  background: url('/img/river2.svg') top center repeat-y;
-  background-size: contain;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-`;
+         animation-delay: 3s;
+         animation-name: ${fadeRiver};
+         animation-duration: 2s;
+         animation-direction: normal;
+         animation-fill-mode: forwards;
+
+         background: url('/img/river2.svg') top center repeat-y;
+         background-size: contain;
+
+				 height: 100%;
+         left: 0;
+         opacity: 0;
+         position: absolute;
+         top: 0;
+         width: 100%;`;
 
 export const FadeTop = styled.div`
   background: linear-gradient(#fdf6d8, transparent);
