@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { prop, ifProp, switchProp } from 'styled-tools';
 
 export const Story = styled.div`
   background: #fdf6d8 repeat-y;
@@ -43,6 +44,8 @@ export const Text = styled.p`
   margin-left: 3rem;
   max-width: 500px;
   text-align: left;
+  opacity: ${ifProp('isVisible', '1', '0')};
+  transition: 1s opacity ease-out;
 
   & span {
     display: block;
@@ -52,21 +55,22 @@ export const Text = styled.p`
 `;
 
 export const River = styled.div`
-         animation-delay: 3s;
-         animation-name: ${fadeRiver};
-         animation-duration: 2s;
-         animation-direction: normal;
-         animation-fill-mode: forwards;
+  animation-delay: 3s;
+  animation-name: ${fadeRiver};
+  animation-duration: 2s;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
 
-         background: url('/img/river2.svg') top center repeat-y;
-         background-size: contain;
+  background: url('/img/river2.svg') top center repeat-y;
+  background-size: contain;
 
-				 height: 100%;
-         left: 0;
-         opacity: 0;
-         position: absolute;
-         top: 0;
-         width: 100%;`;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+`;
 
 export const FadeTop = styled.div`
   background: linear-gradient(#fdf6d8, transparent);

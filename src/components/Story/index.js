@@ -1,5 +1,7 @@
 import React from 'react';
 import { Parallax, ParallaxLayer } from 'react-spring/addons';
+import VisibilitySensor from 'react-visibility-sensor';
+
 import { Content } from './content.js';
 import * as S from './styles';
 
@@ -23,7 +25,11 @@ class Story extends React.Component {
 
             {Content.map((item, i) => (
               <ParallaxLayer key={i} speed={0.2} offset={item.offset}>
-                <S.Text>{item.text}</S.Text>
+                <VisibilitySensor offset={{ top: 200 }}>
+                  {({ isVisible }) => (
+                    <S.Text isVisible={isVisible}>{item.text}</S.Text>
+                  )}
+                </VisibilitySensor>
               </ParallaxLayer>
             ))}
           </Parallax>
