@@ -68,7 +68,8 @@ class Story extends React.Component {
 					</ParallaxLayer>
 					*/}
         </Parallax>
-        <S.Fade />
+        <S.FadeTop />
+        <S.FadeBottom />
       </S.Inner>
     );
   }
