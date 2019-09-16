@@ -1,7 +1,6 @@
 import React from 'react';
 import { Parallax, ParallaxLayer } from 'react-spring/addons';
 import VisibilitySensor from 'react-visibility-sensor';
-
 import { Content } from './content.js';
 import * as S from './styles';
 
@@ -9,6 +8,8 @@ class Story extends React.Component {
   render() {
     return (
       <S.Story>
+        <S.FadeTop />
+        <S.FadeBottom />
         <S.Inner>
           <Parallax
             ref={ref => (this.parallax = ref)}
@@ -23,18 +24,43 @@ class Story extends React.Component {
               <S.River />
             </ParallaxLayer>
 
-            {Content.map((item, i) => (
-              <ParallaxLayer key={i} speed={0.2} offset={item.offset}>
-                <VisibilitySensor offset={{ top: 200 }}>
-                  {({ isVisible }) => (
-                    <S.Text isVisible={isVisible}>{item.text}</S.Text>
-                  )}
-                </VisibilitySensor>
-              </ParallaxLayer>
-            ))}
+            {Content.map((item, i) => {
+              const hasMedia = item.vimeo || item.image || false;
+
+              return (
+                <ParallaxLayer
+                  factor={item.factor}
+                  key={i}
+                  speed={item.speed || 0.2}
+                  offset={item.offset}
+                >
+                  <VisibilitySensor>
+                    {({ isVisible }) => (
+                      <S.Slide
+                        hasMedia={hasMedia}
+                        slideStyle={item.style}
+                        isVisible={isVisible}
+                      >
+                        <S.Text>{item.text}</S.Text>
+                        {item.vimeo && (
+                          <S.Video>
+                            <iframe
+                              src={item.vimeo}
+                              width="640"
+                              height="480"
+                              frameBorder="0"
+                              allow="autoplay; fullscreen"
+                              allowFullScreen
+                            />
+                          </S.Video>
+                        )}
+                      </S.Slide>
+                    )}
+                  </VisibilitySensor>
+                </ParallaxLayer>
+              );
+            })}
           </Parallax>
-          <S.FadeTop />
-          <S.FadeBottom />
         </S.Inner>
       </S.Story>
     );
