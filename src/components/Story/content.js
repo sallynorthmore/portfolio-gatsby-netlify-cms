@@ -20,7 +20,7 @@ export const Content = [
   {
     offset: 3,
     text:
-      'But a love of science and the stars brought to university in Tucson, Arizona, to study astrophysics at age 17.',
+      'But a love of science and the stars brought me, age 17, across the country to Tucson, Arizona, where I studied astrophysics.',
     style: 'whiteText'
   }
 ];
